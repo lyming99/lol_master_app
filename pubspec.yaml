@@ -1,0 +1,106 @@
+name: lol_master_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  go_router: ^14.1.4
+  window_manager: ^0.3.9
+  bruno: ^3.4.3
+  media_kit: ^1.1.10                             # Primary package.
+  media_kit_video: ^1.2.4                        # For video rendering.
+  media_kit_libs_video: ^1.0.4                   # Native video dependencies.
+  dio: ^5.4.3+1
+  process_run: ^0.14.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    # 符文
+    - assets/lol/img/rune/
+    - assets/lol/img/rune/Domination/CheapShot/
+    - assets/lol/img/rune/Domination/DarkHarvest/
+    - assets/lol/img/rune/Domination/Electrocute/
+    - assets/lol/img/rune/Domination/EyeballCollection/
+    - assets/lol/img/rune/Domination/GhostPoro/
+    - assets/lol/img/rune/Domination/HailOfBlades/
+    - assets/lol/img/rune/Domination/IngeniousHunter/
+    - assets/lol/img/rune/Domination/Predator/
+    - assets/lol/img/rune/Domination/RelentlessHunter/
+    - assets/lol/img/rune/Domination/SuddenImpact/
+    - assets/lol/img/rune/Domination/TasteOfBlood/
+    - assets/lol/img/rune/Domination/TreasureHunter/
+    - assets/lol/img/rune/Domination/UltimateHunter/
+    - assets/lol/img/rune/Domination/ZombieWard/
+    - assets/lol/img/rune/Inspiration/BiscuitDelivery/
+    - assets/lol/img/rune/Inspiration/CashBack/
+    - assets/lol/img/rune/Inspiration/CelestialBody/
+    - assets/lol/img/rune/Inspiration/CosmicInsight/
+    - assets/lol/img/rune/Inspiration/FirstStrike/
+    - assets/lol/img/rune/Inspiration/GlacialAugment/
+    - assets/lol/img/rune/Inspiration/HextechFlashtraption/
+    - assets/lol/img/rune/Inspiration/JackOfAllTrades/
+    - assets/lol/img/rune/Inspiration/Kleptomancy/
+    - assets/lol/img/rune/Inspiration/MagicalFootwear/
+    - assets/lol/img/rune/Inspiration/PerfectTiming/
+    - assets/lol/img/rune/Inspiration/TimeWarpTonic/
+    - assets/lol/img/rune/Inspiration/UnsealedSpellbook/
+    - assets/lol/img/rune/Precision/
+    - assets/lol/img/rune/Precision/AbsorbLife/
+    - assets/lol/img/rune/Precision/Conqueror/
+    - assets/lol/img/rune/Precision/CoupDeGrace/
+    - assets/lol/img/rune/Precision/CutDown/
+    - assets/lol/img/rune/Precision/FleetFootwork/
+    - assets/lol/img/rune/Precision/LegendAlacrity/
+    - assets/lol/img/rune/Precision/LegendBloodline/
+    - assets/lol/img/rune/Precision/LegendHaste/
+    - assets/lol/img/rune/Precision/LethalTempo/
+    - assets/lol/img/rune/Precision/PresenceOfMind/
+    - assets/lol/img/rune/Precision/PressTheAttack/
+    - assets/lol/img/rune/Precision/Triumph.png
+    - assets/lol/img/rune/Resolve/
+    - assets/lol/img/rune/Resolve/ApproachVelocity/
+    - assets/lol/img/rune/Resolve/BonePlating/
+    - assets/lol/img/rune/Resolve/Chrysalis/
+    - assets/lol/img/rune/Resolve/Conditioning/
+    - assets/lol/img/rune/Resolve/Demolish/
+    - assets/lol/img/rune/Resolve/FontOfLife/
+    - assets/lol/img/rune/Resolve/GraspOfTheUndying/
+    - assets/lol/img/rune/Resolve/Guardian/
+    - assets/lol/img/rune/Resolve/IronSkin/
+    - assets/lol/img/rune/Resolve/MirrorShell/
+    - assets/lol/img/rune/Resolve/Overgrowth/
+    - assets/lol/img/rune/Resolve/Revitalize/
+    - assets/lol/img/rune/Resolve/SecondWind/
+    - assets/lol/img/rune/Resolve/VeteranAftershock/
+    - assets/lol/img/rune/Sorcery/
+    - assets/lol/img/rune/Sorcery/AbsoluteFocus/
+    - assets/lol/img/rune/Sorcery/ArcaneComet/
+    - assets/lol/img/rune/Sorcery/Celerity/
+    - assets/lol/img/rune/Sorcery/GatheringStorm/
+    - assets/lol/img/rune/Sorcery/LastStand/
+    - assets/lol/img/rune/Sorcery/ManaflowBand/
+    - assets/lol/img/rune/Sorcery/NimbusCloak/
+    - assets/lol/img/rune/Sorcery/NullifyingOrb/
+    - assets/lol/img/rune/Sorcery/PhaseRush/
+    - assets/lol/img/rune/Sorcery/Scorch/
+    - assets/lol/img/rune/Sorcery/SummonAery/
+    - assets/lol/img/rune/Sorcery/Transcendence/
+    - assets/lol/img/rune/Sorcery/Unflinching/
+    - assets/lol/img/rune/Sorcery/Waterwalking/
+    - assets/lol/img/rune/StatMods/
+    - assets/lol/data/
+    - assets/lol/img/item/
+    - assets/lol/img/champion/

@@ -1,0 +1,110 @@
+{
+  autoModifiedSelections: [],
+  current: true,
+  id: 1016999436,
+  isActive: false,
+  isDeletable: true,
+  isEditable: true,
+  isRecommendationOverride: false,
+  isTemporary: false,
+  isValid: true,
+  lastModified: 1717444251812,
+  name: 劫中单,
+  order: 0,
+  pageKeystone: {
+    iconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png,
+    id: 8005,
+    name: 强攻,
+    slotType: kKeyStone,
+    styleId: 8000
+  },
+  primaryStyleIconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/precision_icon_16.svg,
+  primaryStyleId: 8000,
+  primaryStyleName: 精密,
+  quickPlayChampionIds: [],
+  recommendationChampionId: 0,
+  recommendationIndex: -1,
+  runeRecommendationId:,
+  secondaryStyleIconPath: /lol-game-data/assets/v1/perk-images/Styles/Sorcery/sorcery_icon_16.svg,
+  secondaryStyleName: 巫术,
+  selectedPerkIds: [
+    8005,
+    9101,
+    9104,
+    8014,
+    8224,
+    8210,
+    5008,
+    5008,
+    5013
+  ],
+  subStyleId: 8200,
+  tooltipBgPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/p8000_s8200_k8005.jpg,
+  uiPerks: [
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png,
+      id: 8005,
+      name: 强攻,
+      slotType: kKeyStone,
+      styleId: 8000
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/AbsorbLife/AbsorbLife.png,
+      id: 9101,
+      name: 吸收生命力,
+      slotType: kMixedRegularSplashable,
+      styleId: 8000
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png,
+      id: 9104,
+      name: 传说
+      ：
+      欢欣,
+      slotType: kMixedRegularSplashable,
+      styleId: 8000
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png,
+      id: 8014,
+      name: 致命一击,
+      slotType: kMixedRegularSplashable,
+      styleId: 8000
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Sorcery/NullifyingOrb/Pokeshield.png,
+      id: 8224,
+      name: 无效化之法球,
+      slotType: kMixedRegularSplashable,
+      styleId: 8200
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/Styles/Sorcery/Transcendence/Transcendence.png,
+      id: 8210,
+      name: 超然,
+      slotType: kMixedRegularSplashable,
+      styleId: 8200
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/StatMods/StatModsAdaptiveForceIcon.png,
+      id: 5008,
+      name: 适应之力,
+      slotType: kStatMod,
+      styleId: 8400
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/StatMods/StatModsAdaptiveForceIcon.png,
+      id: 5008,
+      name: 适应之力,
+      slotType: kStatMod,
+      styleId: 8400
+    },
+    {
+      iconPath: /lol-game-data/assets/v1/perk-images/StatMods/StatModsTenacityIcon.png,
+      id: 5013,
+      name: 韧性和减速抗性,
+      slotType: kStatMod,
+      styleId: 8400
+    }
+  ]
+}
