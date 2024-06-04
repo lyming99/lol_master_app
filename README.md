@@ -3,7 +3,9 @@
 一个学习 flutter 开发的小工具，目标是帮助玩家练习打LOL,成为英雄联盟大师的同时，学会 Flutter 编程技术。
 ## 软件截图
 <img src="snapshot/main.png" width="640" />
+
 ## 路线图
+
 - (一)课程介绍，开发目标(简单)
 -  (二)搭建 Flutter 开发环境，创建 Flutter 工程(简单)
 - (三)使用 MVC 开发一个界面(简单)
