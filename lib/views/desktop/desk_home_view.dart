@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/util/mvc.dart';
-import 'package:lol_master_app/views/desktop/equip/desk_equip_list_view.dart';
 import 'package:lol_master_app/views/desktop/rune/desk_rune_list_view.dart';
 import 'package:lol_master_app/views/desktop/spell/desk_spell_list_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../../controllers/desktop/desk_home.dart';
+import 'equip/desk_equip_config_list_view.dart';
 import 'hero/desk_hero_list_view.dart';
 
 class DeskHomeView extends MvcView<DeskHomeController> {
@@ -16,6 +16,7 @@ class DeskHomeView extends MvcView<DeskHomeController> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
+        backgroundColor: Colors.transparent,
         title: DragToMoveArea(
           child: SizedBox(
             width: MediaQuery.of(context).size.width - 56,
@@ -44,15 +45,11 @@ class DeskHomeView extends MvcView<DeskHomeController> {
                     height: 32,
                   ),
                   Tab(
-                    text: "装备",
-                    height: 32,
-                  ),
-                  Tab(
-                    text: "召唤师技能",
-                    height: 32,
-                  ),
-                  Tab(
                     text: "符文",
+                    height: 32,
+                  ),
+                  Tab(
+                    text: "装备",
                     height: 32,
                   ),
                 ],
@@ -67,14 +64,11 @@ class DeskHomeView extends MvcView<DeskHomeController> {
               DeskHeroListView(
                 controller: controller.heroListController,
               ),
-              DeskEquipListView(
-                controller: controller.itemListController,
-              ),
-              DeskSpellListView(
-                controller: controller.spellListController,
-              ),
               DeskRuneListView(
                 controller: controller.runeListController,
+              ),
+              DeskEquipConfigListView(
+                controller: controller.itemListController,
               ),
             ],
           )),

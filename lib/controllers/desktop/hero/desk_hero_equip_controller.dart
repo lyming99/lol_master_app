@@ -9,28 +9,19 @@ class DeskHeroEquipController extends MvcController {
       name: "剑圣打野出装",
       icon:
           "https://game.gtimg.cn/images/lol/act/img/equipment/equipment_1.png",
-      startEquipList: [
-        EquipInfo(
-          icon: "assets/lol/img/item/1001.png",
-        ),
-        EquipInfo(
-          icon: "assets/lol/img/item/1001.png",
-        ),
-        EquipInfo(
-          icon: "assets/lol/img/item/1001.png",
-        ),
-      ],
-    ),
-    EquipConfig(
-      name: "剑圣打野出装",
-      icon:
-          "https://game.gtimg.cn/images/lol/act/img/equipment/equipment_1.png",
-      startEquipList: [
-        EquipInfo(
-          icon: "assets/lol/img/item/1001.png",
-        ),
-        EquipInfo(
-          icon: "assets/lol/img/item/1001.png",
+      equipGroupList: [
+        EquipGroup(
+          equipList: [
+            EquipInfo(
+              icon: "assets/lol/img/item/1001.png",
+            ),
+            EquipInfo(
+              icon: "assets/lol/img/item/1001.png",
+            ),
+            EquipInfo(
+              icon: "assets/lol/img/item/1001.png",
+            ),
+          ]
         ),
       ],
     ),

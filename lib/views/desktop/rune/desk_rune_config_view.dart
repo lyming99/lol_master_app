@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/rune/desk_rune_config_controller.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/widgets/rune/rune_background_widget.dart';
+
+import '../../../entities/rune/rune.dart';
+import 'rune_item_widget.dart';
 
 class DeskRuneConfigView extends MvcView<DeskRuneConfigController> {
   const DeskRuneConfigView({super.key, required super.controller});
@@ -17,7 +21,153 @@ class DeskRuneConfigView extends MvcView<DeskRuneConfigController> {
           child: Stack(
             children: [
               // 背景
-              RuneBackgroundWidget(name: controller.selectPrimaryRuneKey,showRune: controller.isPrimarySelectAll,),
+              RuneBackgroundWidget(
+                name: controller.selectPrimaryRuneKey,
+                showRune: controller.isPrimarySelectAll,
+              ),
+              // 名称和保存按钮
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    // 名称
+                    if (controller.renameEditable)
+                      Container(
+                        width: 240,
+                        height: 40,
+                        child: Builder(builder: (context) {
+                          return TextField(
+                            controller: controller.configNameController,
+                            autofocus: true,
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            decoration: InputDecoration(
+                              hintText: "未命名符文",
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color.fromARGB(255, 232, 190, 114))),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color.fromARGB(255, 232, 190, 114))),
+                            ),
+                            cursorColor: Color.fromARGB(255, 232, 190, 114),
+                            onSubmitted: (value) {
+                              controller.config.configName = value;
+                              controller.hideRenameEdit();
+                            },
+                            onChanged: (value) {
+                              controller.config.configName = value;
+                              controller.setSaveEnable(true);
+                            },
+                            onTapOutside: (event) {
+                              controller.hideRenameEdit();
+                            },
+                          );
+                        }),
+                      ),
+                    if (!controller.renameEditable)
+                      InkWell(
+                        onTap: () {
+                          controller.showRenameEdit();
+                        },
+                        child: Container(
+                          width: 240,
+                          height: 40,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                child: Text(
+                                  controller.configName ?? "未命名符文",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ),
+                              Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    // 保存按钮
+                    Container(
+                      width: 80,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: controller.saveEnable == false
+                              ? Color.fromARGB(255, 30, 37, 61)
+                              : Color.fromARGB(255, 30, 37, 61),
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(
+                              color: controller.saveEnable == false
+                                  ? Color.fromARGB(255, 53, 40, 15)
+                                  : Color.fromARGB(255, 232, 190, 114))),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: controller.saveEnable == false
+                              ? null
+                              : () {
+                                  controller.saveConfig();
+                                },
+                          child: Center(
+                            child: Text(
+                              "保存",
+                              style: TextStyle(
+                                  color: controller.saveEnable == false
+                                      ? Color.fromARGB(255, 139, 139, 136)
+                                      : Color.fromARGB(255, 243, 227, 199),
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    // 删除按钮
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 30, 37, 61),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                            color: Color.fromARGB(255, 232, 190, 114)),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            showDeleteConfigDialog(context);
+                          },
+                          child: const Center(
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromARGB(255, 243, 227, 199),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               // 符文内容区域
               Container(
                 margin: EdgeInsets.only(top: 120),
@@ -167,6 +317,39 @@ class DeskRuneConfigView extends MvcView<DeskRuneConfigController> {
     }
     return list;
   }
+
+  void showDeleteConfigDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("删除配置"),
+            content: Text("确定删除当前配置？"),
+            backgroundColor: Color.fromARGB(255, 2, 23, 29),
+
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("取消"),
+              ),
+              TextButton(
+                onPressed: () async {
+                  await controller.deleteConfig();
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                child: Text("确定"),
+              ),
+            ],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: BorderSide(color:Color.fromARGB(255, 168, 121, 8))
+            ),
+          );
+        });
+  }
 }
 
 class RuneConfigItemWidget extends StatefulWidget {
@@ -215,11 +398,14 @@ class _RuneConfigItemWidgetState extends State<RuneConfigItemWidget> {
           ),
           borderRadius: BorderRadius.circular(60),
         ),
-        child: Image.asset(
-          widget.item.icon ?? "",
-          color: selected ? null : Colors.grey.shade900.withOpacity(0.8),
-          colorBlendMode: selected ? null : BlendMode.srcATop,
-        ),
+        child: createRuneItemTooltip(
+            context,
+            widget.item,
+            Image.asset(
+              widget.item.icon ?? "",
+              color: selected ? null : Colors.grey.shade900.withOpacity(0.4),
+              colorBlendMode: selected ? null : BlendMode.srcATop,
+            )),
       ),
     );
   }

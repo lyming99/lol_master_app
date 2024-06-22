@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lol_master_app/controllers/desktop/equip/desk_equip_list_controller.dart';
 import 'package:lol_master_app/controllers/desktop/rune/desk_rune_list_controller.dart';
 import 'package:lol_master_app/controllers/desktop/spell/desk_spell_list_controller.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
+import 'equip/desk_equip_config_list_controller.dart';
 import 'hero/desk_hero_list_controller.dart';
 
 class DeskHomeController extends MvcController {
@@ -11,7 +11,8 @@ class DeskHomeController extends MvcController {
 
   DeskHeroListController heroListController = DeskHeroListController();
 
-  DeskEquipListController itemListController = DeskEquipListController();
+  DeskEquipConfigListController itemListController =
+      DeskEquipConfigListController();
 
   DeskSpellListController spellListController = DeskSpellListController();
 
@@ -20,7 +21,7 @@ class DeskHomeController extends MvcController {
   @override
   void onInitState(BuildContext context, MvcViewState state) {
     super.onInitState(context, state);
-    tabController = TabController(length: 4, vsync: state);
+    tabController = TabController(length: 3, vsync: state);
   }
 
   @override

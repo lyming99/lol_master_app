@@ -1,254 +1,10 @@
 [
   {
-    "id": 8100,
-    "key": "Domination",
-    "icon": "img/rune/7200_Domination.png",
-    "bgIcon":"img/rune/bg_Domination.png",
-    "itemIcon":"img/rune/item_Domination.png",
-    "name": "主宰",
-    "slots": [
-      {
-        "runes": [
-          {
-            "id": 8112,
-            "key": "Electrocute",
-            "icon": "img/rune/Domination/Electrocute/Electrocute.png",
-            "name": "电刑",
-            "shortDesc": "在3秒内用3个<b>独立的</b>攻击或技能命中一位英雄时，会造成额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>。",
-            "longDesc": "在3秒内用3个<b>独立的</b>攻击或技能命中一位英雄时，会造成额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'><font color='#48C4B7'>自适应伤害</font></lol-uikit-tooltipped-keyword>。<br><br>伤害值：30 - 220 (+0.1额外攻击力, +0.05法术强度)。<br><br>冷却时间：25 - 20秒<br><br><hr><i>“我们曾称呼他们为“雷霆领主”，是因为他们的闪电招来了灾祸。”</i>"
-          },
-          {
-            "id": 8128,
-            "key": "DarkHarvest",
-            "icon": "img/rune/Domination/DarkHarvest/DarkHarvest.png",
-            "name": "黑暗收割",
-            "shortDesc": "伤害一名低生命值的英雄时会造成<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>并从该猎物身上收割灵魂。",
-            "longDesc": "伤害一名生命值低于50%的英雄时会造成<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>并收割该英雄的灵魂，将黑暗收割的伤害永久提升5。<br><br>黑暗收割伤害：20-80 (基于等级) (+5伤害x灵魂数) (+0.1额外攻击力) (+0.05法术强度)<br>冷却时间：45秒(参与击杀时重置到1.5秒)"
-          },
-          {
-            "id": 9923,
-            "key": "HailOfBlades",
-            "icon": "img/rune/Domination/HailOfBlades/HailOfBlades.png",
-            "name": "丛刃",
-            "shortDesc": "在攻击敌方英雄时，提供大幅攻击速度给最先的3次攻击。",
-            "longDesc": "在攻击敌方英雄时，提供110%(远程英雄为80%)攻击速度给最先的3次攻击。<br><br>每次攻击的间隔不能超过3秒，否则这个效果就会结束。<br><br>冷却时间：12秒。<br><br><rules>被重置的攻击会使攻击次数上限提升1。<br>允许你暂时溢出你的攻击速度上限。</rules>"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8126,
-            "key": "CheapShot",
-            "icon": "img/rune/Domination/CheapShot/CheapShot.png",
-            "name": "恶意中伤",
-            "shortDesc": "对<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_ImpairAct'>移动或行动受损的</lol-uikit-tooltipped-keyword>敌方英雄造成额外真实伤害。",
-            "longDesc": "对<b>移动或行动受损</b>的敌人造成10~45额外真实伤害(基于等级)。<br><br>冷却时间：4秒<br><rules>会在移动受损之后触发伤害。</rules>"
-          },
-          {
-            "id": 8139,
-            "key": "TasteOfBlood",
-            "icon": "img/rune/Domination/TasteOfBlood/GreenTerror_TasteOfBlood.png",
-            "name": "血之滋味",
-            "shortDesc": "在你伤害一名敌方英雄时治疗自身。",
-            "longDesc": "在你伤害一名敌方英雄时为你提供治疗效果。<br>治疗效果：16-40 (+0.1额外攻击力，+0.05法术强度)生命值(基于等级)<br><br>冷却时间：20秒"
-          },
-          {
-            "id": 8143,
-            "key": "SuddenImpact",
-            "icon": "img/rune/Domination/SuddenImpact/SuddenImpact.png",
-            "name": "猛然冲击",
-            "shortDesc": "在使用一次突进、跃击、闪烁、传送效果或离开潜行状态后，用普攻和技能对敌方英雄造成伤害时会造成额外真实伤害。",
-            "longDesc": "在使用一次突进、跃击、闪烁、传送效果或离开潜行状态后的4秒内，用普攻和技能对敌方英雄造成伤害时会基于等级造成额外的<trueDamage>20 - 80真实伤害</trueDamage>。<br><br>冷却时间：10秒"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8136,
-            "key": "ZombieWard",
-            "icon": "img/rune/Domination/ZombieWard/ZombieWard.png",
-            "name": "僵尸守卫",
-            "shortDesc": "在<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>敌方守卫时，使友方的僵尸守卫从敌方守卫的尸体上爬出。每生成一个僵尸守卫时提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成时提供额外奖励。",
-            "longDesc": "<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>敌方守卫时，会使友方的僵尸守卫从敌方守卫的尸体上爬出。<br><br>此外，每生成一个僵尸守卫，提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度，最多至10层。<br><br>在生成10个僵尸守卫后，额外提供10适应之力。<br><br>僵尸守卫是可被看见的，持续120秒并且不会算入你的守卫限制。"
-          },
-          {
-            "id": 8120,
-            "key": "GhostPoro",
-            "icon": "img/rune/Domination/GhostPoro/GhostPoro.png",
-            "name": "幽灵魄罗",
-            "shortDesc": "在你的守卫消散后，它们会留下一个幽灵魄罗。幽灵魄罗会一直提供视野，直到被敌人发现。每生成一个幽灵魄罗和在你的幽灵魄罗发现一名敌方英雄时，提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成时提供额外奖励。",
-            "longDesc": "在你的守卫消散后，它们会留下一个可以提供90秒视野的幽灵魄罗。附近的敌方英雄会将幽灵魄罗吓跑。<br><br>每生成一个幽灵魄罗和在你的幽灵魄罗发现一名敌方英雄时，提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度，最多至10层。<br><br>在提供10层后，额外提供10适应之力。"
-          },
-          {
-            "id": 8138,
-            "key": "EyeballCollection",
-            "icon": "img/rune/Domination/EyeballCollection/EyeballCollection.png",
-            "name": "眼球收集器",
-            "shortDesc": "在<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>英雄时收集眼球。每个眼球都会提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成收集后会提供额外加成。",
-            "longDesc": "在参与击杀英雄时收集眼球。每个已收集的眼球都会提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度。<br><br>你的收集会在10个眼球时被视为已完成，额外提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，6攻击力或10法术强度。<br><br>每次参与击杀英雄提供1个眼球。"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8135,
-            "key": "TreasureHunter",
-            "icon": "img/rune/Domination/TreasureHunter/TreasureHunter.png",
-            "name": "寻宝猎人",
-            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会基于层数提供额外的金币。 ",
-            "longDesc": "在你下次获得一层<i>赏金猎人</i>效果时提供额外的<gold>50金币</gold>。每层<i>赏金猎人</i>效果都会使提供的金币数额提升<gold>20金币</gold>，至多为<gold>130金币</gold>。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
-          },
-          {
-            "id": 8105,
-            "key": "RelentlessHunter",
-            "icon": "img/rune/Domination/RelentlessHunter/RelentlessHunter.png",
-            "name": "无情猎手",
-            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会提供永久的<b>非战斗状态<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_MS'>移动速度加成</lol-uikit-tooltipped-keyword></b>。",
-            "longDesc": "提供额外的非战斗状态移动速度加成 ，数额相当于<speed>8x<i>赏金猎人</i>层数</speed>。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
-          },
-          {
-            "id": 8106,
-            "key": "UltimateHunter",
-            "icon": "img/rune/Domination/UltimateHunter/UltimateHunter.png",
-            "name": "终极猎人",
-            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会永久为你的终极技能提供冷却缩减。",
-            "longDesc": "你的终极技能获得技能急速，数额相当于<attention>6</attention>+<attention>5</attention>x<i>赏金猎人</i>层数。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 8300,
-    "key": "Inspiration",
-    "icon": "img/rune/7203_Whimsy.png",
-    "bgIcon":"img/rune/bg_Whimsy.png",
-    "itemIcon":"img/rune/item_Whimsy.png",
-    "name": "启迪",
-    "slots": [
-      {
-        "runes": [
-          {
-            "id": 8351,
-            "key": "GlacialAugment",
-            "icon": "img/rune/Inspiration/GlacialAugment/GlacialAugment.png",
-            "name": "冰川增幅",
-            "shortDesc": "定身一名敌方英雄时会引发3道冰川射线来减速附近的敌人们并降低他们对你的队友们的伤害。",
-            "longDesc": "定身一名敌方英雄时会引发3道冰川射线朝着你和其他附近的英雄散发，来生成持续3(+100%定身效果时长)秒的霜冻地带，使敌人们减速20%(+9%每10%治疗和护盾强度)(+6%每100法术强度) (+7%每100额外攻击力)并使敌人们对你队友（不包括你自己）造成的伤害降低15%。<br><br>冷却时间：25秒"
-          },
-          {
-            "id": 8360,
-            "key": "UnsealedSpellbook",
-            "icon": "img/rune/Inspiration/UnsealedSpellbook/UnsealedSpellbook.png",
-            "name": "启封的秘籍",
-            "shortDesc": "在非战斗状态下置换召唤师技能。置换到独特的召唤师技能时将提升你未来进行置换的速率。",
-            "longDesc": "将你的一个已装备的召唤师技能置换成一个新的、单一的召唤师技能。你所置换的每个独特的召唤师技能都会使你的置换冷却时间永久降低25秒（初始置换冷却时间为5分钟）。<br><br>你的首次置换将在6分钟时变为可用状态。<br><rules><br>召唤师技能仅可在非战斗状态下置换。<br>在使用一个已置换的召唤师技能后，你必须置换3次以上才能再次选择第一个召唤师技能。<br>【惩戒】伤害会在置换2次召唤师技能后提升。</rules>"
-          },
-          {
-            "id": 8369,
-            "key": "FirstStrike",
-            "icon": "img/rune/Inspiration/FirstStrike/FirstStrike.png",
-            "name": "先攻",
-            "shortDesc": "在你率先发起与英雄的战斗时，造成8%额外伤害，持续3秒，并基于该额外伤害提供金币。",
-            "longDesc": "在进入与英雄战斗的0.25秒内，对一名敌方英雄进行的攻击或技能将提供15金币和<b>先攻</b>效果，持续3秒，来使你对英雄们造成<truedamage>8%</truedamage>额外<truedamage>伤害</truedamage>，并提供<gold>50% (远程英雄为35%)</gold>该额外伤害值的<gold>金币</gold>。<br><br>冷却时间：<scaleLevel>25 - 15</scaleLevel>秒"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8306,
-            "key": "HextechFlashtraption",
-            "icon": "img/rune/Inspiration/HextechFlashtraption/HextechFlashtraption.png",
-            "name": "海克斯科技闪现罗网",
-            "shortDesc": "当【闪现】尚未冷却完毕时，它会被替换为<i>海克斯闪现</i>。<br><br><i>海克斯闪现</i>：引导，然后闪烁到一个新位置。",
-            "longDesc": "当【闪现】尚未冷却完毕时，它会被替换为<i>海克斯闪现</i>。<br><br><i>海克斯闪现</i>：引导2秒后闪烁到一个新位置。<br><br>冷却时间：20秒。在你进入与英雄战斗的状态时，会有一个为期10秒的冷却时间。<br>"
-          },
-          {
-            "id": 8304,
-            "key": "MagicalFootwear",
-            "icon": "img/rune/Inspiration/MagicalFootwear/MagicalFootwear.png",
-            "name": "神奇之鞋",
-            "shortDesc": "你在12分钟时获得免费的鞋子，但你在之前不能购买鞋子。每次<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>协助击杀</lol-uikit-tooltipped-keyword>都会让你的鞋子的到来时间提前45秒。",
-            "longDesc": "你在12分钟时获得免费的有点神奇之鞋，但你在之前不能购买鞋子。你每参与一次击杀，就会使获得鞋子的时间点提前45秒。<br><br>有点神奇之鞋可为你提供额外的<speed>10移动速度</speed>。"
-          },
-          {
-            "id": 8321,
-            "key": "CashBack",
-            "icon": "img/rune/Inspiration/CashBack/CashBack2.png",
-            "name": "返现",
-            "shortDesc": "在你购买传说级装备时返还一些金币。",
-            "longDesc": "在你购买传说级装备时返还6%金币。"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8313,
-            "key": "PerfectTiming",
-            "icon": "img/rune/Inspiration/PerfectTiming/AlchemistCabinet.png",
-            "name": "三重补药",
-            "shortDesc": "在达到3级时，获得一瓶【贪财合剂】。<br>在达到6级时，获得一瓶【原力合剂】。<br>在达到9级时，获得一瓶【技能合剂】。 ",
-            "longDesc": "在达到3级时，获得一瓶【贪财合剂】。<br>在达到6级时，获得一瓶【原力合剂】。<br>在达到9级时，获得一瓶【技能合剂】。 "
-          },
-          {
-            "id": 8352,
-            "key": "TimeWarpTonic",
-            "icon": "img/rune/Inspiration/TimeWarpTonic/TimeWarpTonic.png",
-            "name": "时间扭曲补药",
-            "shortDesc": "药水会即刻提供一部分回复额度。",
-            "longDesc": "在享用一瓶药水时，会即时提供其40%的生命回复额度。<br><br>"
-          },
-          {
-            "id": 8345,
-            "key": "BiscuitDelivery",
-            "icon": "img/rune/Inspiration/BiscuitDelivery/BiscuitDelivery.png",
-            "name": "饼干配送",
-            "shortDesc": "每过2分钟获得一个免费的【饼干】，直到6分钟为止。享用一个饼干可永久提升你的最大法力值并回复生命值和法力值。",
-            "longDesc": "饼干配送：每过2分钟获得一个永续意志夹心饼干，直到6分钟为止。<br><br>饼干可回复你8%的已损失生命值和法力值。使用一个饼干可永久给予你40最大法力值。<br><br><i>没有法力的</i>英雄会回复12%已损失生命值。"
-          }
-        ]
-      },
-      {
-        "runes": [
-          {
-            "id": 8347,
-            "key": "CosmicInsight",
-            "icon": "img/rune/Inspiration/CosmicInsight/CosmicInsight.png",
-            "name": "星界洞悉",
-            "shortDesc": "+<attention>18</attention>召唤师技能急速<br>+<attention>10</attention>装备急速",
-            "longDesc": "+<attention>18</attention>召唤师技能急速<br>+<attention>10</attention>装备急速"
-          },
-          {
-            "id": 8410,
-            "key": "ApproachVelocity",
-            "icon": "img/rune/Resolve/ApproachVelocity/ApproachVelocity.png",
-            "name": "行近速率",
-            "shortDesc": "朝着附近<lol-uikit-tooltipped-keyword key=\"LinkTooltip_Description_ImpairMov\">移动受损</lol-uikit-tooltipped-keyword>的敌方英雄移动时，获得<lol-uikit-tooltipped-keyword key=\"LinkTooltip_Description_MS\">移动速度</lol-uikit-tooltipped-keyword>加成，如果移动受损是你施加的，这个加成还会提升。",
-            "longDesc": "朝着附近移动受损的敌方英雄移动时，将获得<speed>7.5%移动速度</speed>加成。朝着任一被你施加了移动受损的敌方英雄移动时，这个加成将提升至<speed>15%移动速度</speed>。<br><br>来自友军控制效果的激活距离：1000"
-          },
-          {
-            "id": 8316,
-            "key": "JackOfAllTrades",
-            "icon": "img/rune/Inspiration/JackOfAllTrades/JackofAllTrades2.png",
-            "name": "多面手",
-            "shortDesc": "每从装备中获得一种不同属性，就会获得一层【多面手】。每层为你提供<speed>1技能急速</speed>。<br><br>在5层和10层时获得额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>适应之力</lol-uikit-tooltipped-keyword>。",
-            "longDesc": "每从装备中获得一种不同属性，就会获得一层【多面手】。每层为你提供<speed>1技能急速</speed>。<br><br>在5层和10层时相应获得额外的10和25<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>适应之力</lol-uikit-tooltipped-keyword>。"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": 8000,
     "key": "Precision",
     "icon": "img/rune/7201_Precision.png",
-    "bgIcon":"img/rune/bg_Precision.png",
-    "itemIcon":"img/rune/item_Precision.png",
+    "bgIcon": "img/rune/bg_Precision.png",
+    "itemIcon": "img/rune/item_Precision.png",
     "name": "精密",
     "slots": [
       {
@@ -366,122 +122,122 @@
     ]
   },
   {
-    "id": 8400,
-    "key": "Resolve",
-    "icon": "img/rune/7204_Resolve.png",
-    "bgIcon":"img/rune/bg_Resolve.png",
-    "itemIcon":"img/rune/item_Resolve.png",
-    "name": "坚决",
+    "id": 8100,
+    "key": "Domination",
+    "icon": "img/rune/7200_Domination.png",
+    "bgIcon": "img/rune/bg_Domination.png",
+    "itemIcon": "img/rune/item_Domination.png",
+    "name": "主宰",
     "slots": [
       {
         "runes": [
           {
-            "id": 8437,
-            "key": "GraspOfTheUndying",
-            "icon": "img/rune/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
-            "name": "不灭之握",
-            "shortDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会造成额外魔法伤害、治疗你、并永久提升你的生命值。",
-            "longDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会：<li>造成相当于你3.5%最大生命值的魔法伤害</li><li>治疗你3 + 1.2%的最大生命值</li><li>你的生命值永久提升7</li><br><rules><i>远程英雄：</i>伤害、治疗效果和提升的永久生命值减少40%。</rules><br>"
+            "id": 8112,
+            "key": "Electrocute",
+            "icon": "img/rune/Domination/Electrocute/Electrocute.png",
+            "name": "电刑",
+            "shortDesc": "在3秒内用3个<b>独立的</b>攻击或技能命中一位英雄时，会造成额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>。",
+            "longDesc": "在3秒内用3个<b>独立的</b>攻击或技能命中一位英雄时，会造成额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'><font color='#48C4B7'>自适应伤害</font></lol-uikit-tooltipped-keyword>。<br><br>伤害值：30 - 220 (+0.1额外攻击力, +0.05法术强度)。<br><br>冷却时间：25 - 20秒<br><br><hr><i>“我们曾称呼他们为“雷霆领主”，是因为他们的闪电招来了灾祸。”</i>"
           },
           {
-            "id": 8439,
-            "key": "Aftershock",
-            "icon": "img/rune/Resolve/VeteranAftershock/VeteranAftershock.png",
-            "name": "余震",
-            "shortDesc": "在你<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Immobilize'>定身</lol-uikit-tooltipped-keyword>一个敌方英雄后提供防御属性，稍后会在你的周围造成爆发性的魔法伤害。",
-            "longDesc": "在定身住一名敌方英雄后，使你的护甲和魔法抗性提升35+你80%的额外双抗，持续2.5秒。随后会爆炸，对附近的敌人造成魔法伤害。<br><br>伤害值：25 - 120 (+你8%的额外生命值)<br>冷却时间：20秒<br><br>来自余震的双抗加成封顶值：80-150(基于等级)<br>"
+            "id": 8128,
+            "key": "DarkHarvest",
+            "icon": "img/rune/Domination/DarkHarvest/DarkHarvest.png",
+            "name": "黑暗收割",
+            "shortDesc": "伤害一名低生命值的英雄时会造成<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>并从该猎物身上收割灵魂。",
+            "longDesc": "伤害一名生命值低于50%的英雄时会造成<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_AdaptiveDmg'>自适应伤害</lol-uikit-tooltipped-keyword>并收割该英雄的灵魂，将黑暗收割的伤害永久提升5。<br><br>黑暗收割伤害：20-80 (基于等级) (+5伤害x灵魂数) (+0.1额外攻击力) (+0.05法术强度)<br>冷却时间：45秒(参与击杀时重置到1.5秒)"
           },
           {
-            "id": 8465,
-            "key": "Guardian",
-            "icon": "img/rune/Resolve/Guardian/Guardian.png",
-            "name": "守护者",
-            "shortDesc": "守护你选作技能目标的友军和那些距离你非常近的友军们。如果你和一个被守护的友军即将承受伤害，那么你们两个都会获得一层护盾。",
-            "longDesc": "<i>守护</i>距离你350码内的友军，以及被你选为技能目标的友军2.5秒。当<i>守护</i>持续时，如果你或该友军在<i>守护</i>持续期间承受的伤害超过一定数额，那么你们两个都会获得一层持续1.5秒的护盾。<br><br>冷却时间：<scaleLevel>90 ~40</scaleLevel>秒<br>护盾值：<scaleLevel>45~120</scaleLevel>+你<scaleAP>12.5%</scaleAP>法术强度+你<scalehealth>8%</scalehealth>额外生命值。<br>触发阈值：<scaleLevel>90~250</scaleLevel>折后伤害。"
+            "id": 9923,
+            "key": "HailOfBlades",
+            "icon": "img/rune/Domination/HailOfBlades/HailOfBlades.png",
+            "name": "丛刃",
+            "shortDesc": "在攻击敌方英雄时，提供大幅攻击速度给最先的3次攻击。",
+            "longDesc": "在攻击敌方英雄时，提供110%(远程英雄为80%)攻击速度给最先的3次攻击。<br><br>每次攻击的间隔不能超过3秒，否则这个效果就会结束。<br><br>冷却时间：12秒。<br><br><rules>被重置的攻击会使攻击次数上限提升1。<br>允许你暂时溢出你的攻击速度上限。</rules>"
           }
         ]
       },
       {
         "runes": [
           {
-            "id": 8446,
-            "key": "Demolish",
-            "icon": "img/rune/Resolve/Demolish/Demolish.png",
-            "name": "爆破",
-            "shortDesc": "当位于防御塔附近时，持续充能一次针对防御塔的强力攻击。",
-            "longDesc": "当位于防御塔600码内时，在3秒里持续充能一次针对防御塔的强力攻击。充能攻击造成100(+你35%最大生命值)额外伤害。<br><br>冷却时间：45秒"
+            "id": 8126,
+            "key": "CheapShot",
+            "icon": "img/rune/Domination/CheapShot/CheapShot.png",
+            "name": "恶意中伤",
+            "shortDesc": "对<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_ImpairAct'>移动或行动受损的</lol-uikit-tooltipped-keyword>敌方英雄造成额外真实伤害。",
+            "longDesc": "对<b>移动或行动受损</b>的敌人造成10~45额外真实伤害(基于等级)。<br><br>冷却时间：4秒<br><rules>会在移动受损之后触发伤害。</rules>"
           },
           {
-            "id": 8463,
-            "key": "FontOfLife",
-            "icon": "img/rune/Resolve/FontOfLife/FontOfLife.png",
-            "name": "生命源泉",
-            "shortDesc": "<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_ImpairMov'>干扰</lol-uikit-tooltipped-keyword>一个敌方英雄的移动可治疗附近的友方英雄们。 ",
-            "longDesc": "干扰敌方英雄的移动可为你和附近生命值最低的友方英雄回复<healing>@BaseHeal@生命值</healing>。<br><br>远程英雄的使用效能为70%。<br><br>冷却时间：20秒"
+            "id": 8139,
+            "key": "TasteOfBlood",
+            "icon": "img/rune/Domination/TasteOfBlood/GreenTerror_TasteOfBlood.png",
+            "name": "血之滋味",
+            "shortDesc": "在你伤害一名敌方英雄时治疗自身。",
+            "longDesc": "在你伤害一名敌方英雄时为你提供治疗效果。<br>治疗效果：16-40 (+0.1额外攻击力，+0.05法术强度)生命值(基于等级)<br><br>冷却时间：20秒"
           },
           {
-            "id": 8401,
-            "key": "ShieldBash",
-            "icon": "img/rune/Resolve/MirrorShell/MirrorShell.png",
-            "name": "护盾猛击",
-            "shortDesc": "当你获得一个护盾时，你的下次对英雄发起的普攻造成额外<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自适应</font></lol-uikit-tooltipped-keyword>伤害。",
-            "longDesc": "在带有护盾时，基于等级获得<scaleLevel>1 - 10</scaleLevel>护甲和魔法抗性。<br><br>在你获得一个新的护盾时，你的下一次对英雄发起的普攻造成<scaleLevel>5 - 30</scaleLevel><scaleHealth>(+1.5%额外生命值)</scaleHealth><scaleMana>(+8.5%新护盾值)</scaleMana>额外<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自适应</font></lol-uikit-tooltipped-keyword>伤害。<br><br>在护盾消散后，你最多有2秒的时间来使用这个效果。"
+            "id": 8143,
+            "key": "SuddenImpact",
+            "icon": "img/rune/Domination/SuddenImpact/SuddenImpact.png",
+            "name": "猛然冲击",
+            "shortDesc": "在使用一次突进、跃击、闪烁、传送效果或离开潜行状态后，用普攻和技能对敌方英雄造成伤害时会造成额外真实伤害。",
+            "longDesc": "在使用一次突进、跃击、闪烁、传送效果或离开潜行状态后的4秒内，用普攻和技能对敌方英雄造成伤害时会基于等级造成额外的<trueDamage>20 - 80真实伤害</trueDamage>。<br><br>冷却时间：10秒"
           }
         ]
       },
       {
         "runes": [
           {
-            "id": 8429,
-            "key": "Conditioning",
-            "icon": "img/rune/Resolve/Conditioning/Conditioning.png",
-            "name": "调节",
-            "shortDesc": "在12分钟时获得+8护甲和+8魔抗，并使你的额外护甲和额外魔抗提升3%。",
-            "longDesc": "在12分钟时获得+8护甲和+8魔抗，并使你的额外护甲和额外魔抗提升3%。"
+            "id": 8136,
+            "key": "ZombieWard",
+            "icon": "img/rune/Domination/ZombieWard/ZombieWard.png",
+            "name": "僵尸守卫",
+            "shortDesc": "在<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>敌方守卫时，使友方的僵尸守卫从敌方守卫的尸体上爬出。每生成一个僵尸守卫时提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成时提供额外奖励。",
+            "longDesc": "<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>敌方守卫时，会使友方的僵尸守卫从敌方守卫的尸体上爬出。<br><br>此外，每生成一个僵尸守卫，提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度，最多至10层。<br><br>在生成10个僵尸守卫后，额外提供10适应之力。<br><br>僵尸守卫是可被看见的，持续120秒并且不会算入你的守卫限制。"
           },
           {
-            "id": 8444,
-            "key": "SecondWind",
-            "icon": "img/rune/Resolve/SecondWind/SecondWind.png",
-            "name": "复苏之风",
-            "shortDesc": "在受到来自一名敌方英雄的伤害后，会持续治疗一些已损失生命值。",
-            "longDesc": "在你受到来自一名敌方英雄伤害之后，你会在10秒里持续回复生命值，总额相当于你4%已损失生命值 +3。"
+            "id": 8120,
+            "key": "GhostPoro",
+            "icon": "img/rune/Domination/GhostPoro/GhostPoro.png",
+            "name": "幽灵魄罗",
+            "shortDesc": "在你的守卫消散后，它们会留下一个幽灵魄罗。幽灵魄罗会一直提供视野，直到被敌人发现。每生成一个幽灵魄罗和在你的幽灵魄罗发现一名敌方英雄时，提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成时提供额外奖励。",
+            "longDesc": "在你的守卫消散后，它们会留下一个可以提供90秒视野的幽灵魄罗。附近的敌方英雄会将幽灵魄罗吓跑。<br><br>每生成一个幽灵魄罗和在你的幽灵魄罗发现一名敌方英雄时，提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度，最多至10层。<br><br>在提供10层后，额外提供10适应之力。"
           },
           {
-            "id": 8473,
-            "key": "BonePlating",
-            "icon": "img/rune/Resolve/BonePlating/BonePlating.png",
-            "name": "骸骨镀层",
-            "shortDesc": "在承受来自一名敌方英雄的伤害后，你所受的下3次来自英雄的技能或攻击将少造成30-60伤害。<br><br>持续时长：1.5秒<br>冷却时间：55秒",
-            "longDesc": "在承受来自一名敌方英雄的伤害后，你所受的下3次来自英雄的技能或攻击将少造成30-60伤害。<br><br>持续时长：1.5秒<br>冷却时间：55秒"
+            "id": 8138,
+            "key": "EyeballCollection",
+            "icon": "img/rune/Domination/EyeballCollection/EyeballCollection.png",
+            "name": "眼球收集器",
+            "shortDesc": "在<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>英雄时收集眼球。每个眼球都会提供永久的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>，并在完成收集后会提供额外加成。",
+            "longDesc": "在参与击杀英雄时收集眼球。每个已收集的眼球都会提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，1.2攻击力或2法术强度。<br><br>你的收集会在10个眼球时被视为已完成，额外提供一个<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应的</font></lol-uikit-tooltipped-keyword>加成，6攻击力或10法术强度。<br><br>每次参与击杀英雄提供1个眼球。"
           }
         ]
       },
       {
         "runes": [
           {
-            "id": 8451,
-            "key": "Overgrowth",
-            "icon": "img/rune/Resolve/Overgrowth/Overgrowth.png",
-            "name": "过度生长",
-            "shortDesc": "在附近有小兵或野怪死亡时获得永久最大生命值。",
-            "longDesc": "你附近每有8个野怪或小兵死亡，就会使你永久获得3最大生命值。<br><br>在你吸收了120个野怪或小兵时，提供一个额外的3.5%最大生命值。"
+            "id": 8135,
+            "key": "TreasureHunter",
+            "icon": "img/rune/Domination/TreasureHunter/TreasureHunter.png",
+            "name": "寻宝猎人",
+            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会基于层数提供额外的金币。 ",
+            "longDesc": "在你下次获得一层<i>赏金猎人</i>效果时提供额外的<gold>50金币</gold>。每层<i>赏金猎人</i>效果都会使提供的金币数额提升<gold>20金币</gold>，至多为<gold>130金币</gold>。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
           },
           {
-            "id": 8453,
-            "key": "Revitalize",
-            "icon": "img/rune/Resolve/Revitalize/Revitalize.png",
-            "name": "复苏",
-            "shortDesc": "获得5%治疗和护盾强度。<br><br>你对低于40%生命值的目标施放或获得的治疗效果和护盾效果会增强10%。",
-            "longDesc": "获得5%治疗和护盾强度。<br><br>你对低于40%生命值的目标施放或获得的治疗效果和护盾效果会增强10%。"
+            "id": 8105,
+            "key": "RelentlessHunter",
+            "icon": "img/rune/Domination/RelentlessHunter/RelentlessHunter.png",
+            "name": "无情猎手",
+            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会提供永久的<b>非战斗状态<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_MS'>移动速度加成</lol-uikit-tooltipped-keyword></b>。",
+            "longDesc": "提供额外的非战斗状态移动速度加成 ，数额相当于<speed>8x<i>赏金猎人</i>层数</speed>。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
           },
           {
-            "id": 8242,
-            "key": "Unflinching",
-            "icon": "img/rune/Sorcery/Unflinching/Unflinching.png",
-            "name": "坚定",
-            "shortDesc": "在被控制时获得护甲与魔抗。",
-            "longDesc": "在被控制时和之后的2秒里获得2 - 10(随等级增长)护甲和魔法抗性。"
+            "id": 8106,
+            "key": "UltimateHunter",
+            "icon": "img/rune/Domination/UltimateHunter/UltimateHunter.png",
+            "name": "终极猎人",
+            "shortDesc": "<b>独特的</b><lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>参与击杀</lol-uikit-tooltipped-keyword>会永久为你的终极技能提供冷却缩减。",
+            "longDesc": "你的终极技能获得技能急速，数额相当于<attention>6</attention>+<attention>5</attention>x<i>赏金猎人</i>层数。<br><br>你首次参与击杀每位独特的敌方英雄时，都会赚取一层<i>赏金猎人</i>效果。"
           }
         ]
       }
@@ -491,8 +247,8 @@
     "id": 8200,
     "key": "Sorcery",
     "icon": "img/rune/7202_Sorcery.png",
-    "bgIcon":"img/rune/bg_Sorcery.png",
-    "itemIcon":"img/rune/item_Sorcery.png",
+    "bgIcon": "img/rune/bg_Sorcery.png",
+    "itemIcon": "img/rune/item_Sorcery.png",
     "name": "巫术",
     "slots": [
       {
@@ -604,6 +360,250 @@
             "name": "风暴聚集",
             "shortDesc": "随着游戏的进程而获得数额不断提升的攻击力或法术强度，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>自动适应</lol-uikit-tooltipped-keyword>。",
             "longDesc": "每10分钟获得法术强度或攻击力，<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自动适应</font></lol-uikit-tooltipped-keyword>。<br><br><i>10分钟</i>: + 8法术强度 或 5攻击力<br><i>20分钟</i>: + 24法术强度 或 14攻击力<br><i>30分钟</i>: + 48法术强度 或 29攻击力<br><i>40分钟</i>: + 80法术强度 或 48攻击力<br><i>50分钟</i>: + 120法术强度 或 72攻击力<br><i>60分钟</i>: + 168法术强度 或 101攻击力<br>以此类推……"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8300,
+    "key": "Inspiration",
+    "icon": "img/rune/7203_Whimsy.png",
+    "bgIcon": "img/rune/bg_Whimsy.png",
+    "itemIcon": "img/rune/item_Whimsy.png",
+    "name": "启迪",
+    "slots": [
+      {
+        "runes": [
+          {
+            "id": 8351,
+            "key": "GlacialAugment",
+            "icon": "img/rune/Inspiration/GlacialAugment/GlacialAugment.png",
+            "name": "冰川增幅",
+            "shortDesc": "定身一名敌方英雄时会引发3道冰川射线来减速附近的敌人们并降低他们对你的队友们的伤害。",
+            "longDesc": "定身一名敌方英雄时会引发3道冰川射线朝着你和其他附近的英雄散发，来生成持续3(+100%定身效果时长)秒的霜冻地带，使敌人们减速20%(+9%每10%治疗和护盾强度)(+6%每100法术强度) (+7%每100额外攻击力)并使敌人们对你队友（不包括你自己）造成的伤害降低15%。<br><br>冷却时间：25秒"
+          },
+          {
+            "id": 8360,
+            "key": "UnsealedSpellbook",
+            "icon": "img/rune/Inspiration/UnsealedSpellbook/UnsealedSpellbook.png",
+            "name": "启封的秘籍",
+            "shortDesc": "在非战斗状态下置换召唤师技能。置换到独特的召唤师技能时将提升你未来进行置换的速率。",
+            "longDesc": "将你的一个已装备的召唤师技能置换成一个新的、单一的召唤师技能。你所置换的每个独特的召唤师技能都会使你的置换冷却时间永久降低25秒（初始置换冷却时间为5分钟）。<br><br>你的首次置换将在6分钟时变为可用状态。<br><rules><br>召唤师技能仅可在非战斗状态下置换。<br>在使用一个已置换的召唤师技能后，你必须置换3次以上才能再次选择第一个召唤师技能。<br>【惩戒】伤害会在置换2次召唤师技能后提升。</rules>"
+          },
+          {
+            "id": 8369,
+            "key": "FirstStrike",
+            "icon": "img/rune/Inspiration/FirstStrike/FirstStrike.png",
+            "name": "先攻",
+            "shortDesc": "在你率先发起与英雄的战斗时，造成8%额外伤害，持续3秒，并基于该额外伤害提供金币。",
+            "longDesc": "在进入与英雄战斗的0.25秒内，对一名敌方英雄进行的攻击或技能将提供15金币和<b>先攻</b>效果，持续3秒，来使你对英雄们造成<truedamage>8%</truedamage>额外<truedamage>伤害</truedamage>，并提供<gold>50% (远程英雄为35%)</gold>该额外伤害值的<gold>金币</gold>。<br><br>冷却时间：<scaleLevel>25 - 15</scaleLevel>秒"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8306,
+            "key": "HextechFlashtraption",
+            "icon": "img/rune/Inspiration/HextechFlashtraption/HextechFlashtraption.png",
+            "name": "海克斯科技闪现罗网",
+            "shortDesc": "当【闪现】尚未冷却完毕时，它会被替换为<i>海克斯闪现</i>。<br><br><i>海克斯闪现</i>：引导，然后闪烁到一个新位置。",
+            "longDesc": "当【闪现】尚未冷却完毕时，它会被替换为<i>海克斯闪现</i>。<br><br><i>海克斯闪现</i>：引导2秒后闪烁到一个新位置。<br><br>冷却时间：20秒。在你进入与英雄战斗的状态时，会有一个为期10秒的冷却时间。<br>"
+          },
+          {
+            "id": 8304,
+            "key": "MagicalFootwear",
+            "icon": "img/rune/Inspiration/MagicalFootwear/MagicalFootwear.png",
+            "name": "神奇之鞋",
+            "shortDesc": "你在12分钟时获得免费的鞋子，但你在之前不能购买鞋子。每次<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Takedown'>协助击杀</lol-uikit-tooltipped-keyword>都会让你的鞋子的到来时间提前45秒。",
+            "longDesc": "你在12分钟时获得免费的有点神奇之鞋，但你在之前不能购买鞋子。你每参与一次击杀，就会使获得鞋子的时间点提前45秒。<br><br>有点神奇之鞋可为你提供额外的<speed>10移动速度</speed>。"
+          },
+          {
+            "id": 8321,
+            "key": "CashBack",
+            "icon": "img/rune/Inspiration/CashBack/CashBack2.png",
+            "name": "返现",
+            "shortDesc": "在你购买传说级装备时返还一些金币。",
+            "longDesc": "在你购买传说级装备时返还6%金币。"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8313,
+            "key": "PerfectTiming",
+            "icon": "img/rune/Inspiration/PerfectTiming/AlchemistCabinet.png",
+            "name": "三重补药",
+            "shortDesc": "在达到3级时，获得一瓶【贪财合剂】。<br>在达到6级时，获得一瓶【原力合剂】。<br>在达到9级时，获得一瓶【技能合剂】。 ",
+            "longDesc": "在达到3级时，获得一瓶【贪财合剂】。<br>在达到6级时，获得一瓶【原力合剂】。<br>在达到9级时，获得一瓶【技能合剂】。 "
+          },
+          {
+            "id": 8352,
+            "key": "TimeWarpTonic",
+            "icon": "img/rune/Inspiration/TimeWarpTonic/TimeWarpTonic.png",
+            "name": "时间扭曲补药",
+            "shortDesc": "药水会即刻提供一部分回复额度。",
+            "longDesc": "在享用一瓶药水时，会即时提供其40%的生命回复额度。<br><br>"
+          },
+          {
+            "id": 8345,
+            "key": "BiscuitDelivery",
+            "icon": "img/rune/Inspiration/BiscuitDelivery/BiscuitDelivery.png",
+            "name": "饼干配送",
+            "shortDesc": "每过2分钟获得一个免费的【饼干】，直到6分钟为止。享用一个饼干可永久提升你的最大法力值并回复生命值和法力值。",
+            "longDesc": "饼干配送：每过2分钟获得一个永续意志夹心饼干，直到6分钟为止。<br><br>饼干可回复你8%的已损失生命值和法力值。使用一个饼干可永久给予你40最大法力值。<br><br><i>没有法力的</i>英雄会回复12%已损失生命值。"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8347,
+            "key": "CosmicInsight",
+            "icon": "img/rune/Inspiration/CosmicInsight/CosmicInsight.png",
+            "name": "星界洞悉",
+            "shortDesc": "+<attention>18</attention>召唤师技能急速<br>+<attention>10</attention>装备急速",
+            "longDesc": "+<attention>18</attention>召唤师技能急速<br>+<attention>10</attention>装备急速"
+          },
+          {
+            "id": 8410,
+            "key": "ApproachVelocity",
+            "icon": "img/rune/Resolve/ApproachVelocity/ApproachVelocity.png",
+            "name": "行近速率",
+            "shortDesc": "朝着附近<lol-uikit-tooltipped-keyword key=\"LinkTooltip_Description_ImpairMov\">移动受损</lol-uikit-tooltipped-keyword>的敌方英雄移动时，获得<lol-uikit-tooltipped-keyword key=\"LinkTooltip_Description_MS\">移动速度</lol-uikit-tooltipped-keyword>加成，如果移动受损是你施加的，这个加成还会提升。",
+            "longDesc": "朝着附近移动受损的敌方英雄移动时，将获得<speed>7.5%移动速度</speed>加成。朝着任一被你施加了移动受损的敌方英雄移动时，这个加成将提升至<speed>15%移动速度</speed>。<br><br>来自友军控制效果的激活距离：1000"
+          },
+          {
+            "id": 8316,
+            "key": "JackOfAllTrades",
+            "icon": "img/rune/Inspiration/JackOfAllTrades/JackofAllTrades2.png",
+            "name": "多面手",
+            "shortDesc": "每从装备中获得一种不同属性，就会获得一层【多面手】。每层为你提供<speed>1技能急速</speed>。<br><br>在5层和10层时获得额外的<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>适应之力</lol-uikit-tooltipped-keyword>。",
+            "longDesc": "每从装备中获得一种不同属性，就会获得一层【多面手】。每层为你提供<speed>1技能急速</speed>。<br><br>在5层和10层时相应获得额外的10和25<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'>适应之力</lol-uikit-tooltipped-keyword>。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8400,
+    "key": "Resolve",
+    "icon": "img/rune/7204_Resolve.png",
+    "bgIcon": "img/rune/bg_Resolve.png",
+    "itemIcon": "img/rune/item_Resolve.png",
+    "name": "坚决",
+    "slots": [
+      {
+        "runes": [
+          {
+            "id": 8437,
+            "key": "GraspOfTheUndying",
+            "icon": "img/rune/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
+            "name": "不灭之握",
+            "shortDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会造成额外魔法伤害、治疗你、并永久提升你的生命值。",
+            "longDesc": "在战斗中每过4秒，你对一个英雄发起的下一次普攻将会：<li>造成相当于你3.5%最大生命值的魔法伤害</li><li>治疗你3 + 1.2%的最大生命值</li><li>你的生命值永久提升7</li><br><rules><i>远程英雄：</i>伤害、治疗效果和提升的永久生命值减少40%。</rules><br>"
+          },
+          {
+            "id": 8439,
+            "key": "Aftershock",
+            "icon": "img/rune/Resolve/VeteranAftershock/VeteranAftershock.png",
+            "name": "余震",
+            "shortDesc": "在你<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Immobilize'>定身</lol-uikit-tooltipped-keyword>一个敌方英雄后提供防御属性，稍后会在你的周围造成爆发性的魔法伤害。",
+            "longDesc": "在定身住一名敌方英雄后，使你的护甲和魔法抗性提升35+你80%的额外双抗，持续2.5秒。随后会爆炸，对附近的敌人造成魔法伤害。<br><br>伤害值：25 - 120 (+你8%的额外生命值)<br>冷却时间：20秒<br><br>来自余震的双抗加成封顶值：80-150(基于等级)<br>"
+          },
+          {
+            "id": 8465,
+            "key": "Guardian",
+            "icon": "img/rune/Resolve/Guardian/Guardian.png",
+            "name": "守护者",
+            "shortDesc": "守护你选作技能目标的友军和那些距离你非常近的友军们。如果你和一个被守护的友军即将承受伤害，那么你们两个都会获得一层护盾。",
+            "longDesc": "<i>守护</i>距离你350码内的友军，以及被你选为技能目标的友军2.5秒。当<i>守护</i>持续时，如果你或该友军在<i>守护</i>持续期间承受的伤害超过一定数额，那么你们两个都会获得一层持续1.5秒的护盾。<br><br>冷却时间：<scaleLevel>90 ~40</scaleLevel>秒<br>护盾值：<scaleLevel>45~120</scaleLevel>+你<scaleAP>12.5%</scaleAP>法术强度+你<scalehealth>8%</scalehealth>额外生命值。<br>触发阈值：<scaleLevel>90~250</scaleLevel>折后伤害。"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8446,
+            "key": "Demolish",
+            "icon": "img/rune/Resolve/Demolish/Demolish.png",
+            "name": "爆破",
+            "shortDesc": "当位于防御塔附近时，持续充能一次针对防御塔的强力攻击。",
+            "longDesc": "当位于防御塔600码内时，在3秒里持续充能一次针对防御塔的强力攻击。充能攻击造成100(+你35%最大生命值)额外伤害。<br><br>冷却时间：45秒"
+          },
+          {
+            "id": 8463,
+            "key": "FontOfLife",
+            "icon": "img/rune/Resolve/FontOfLife/FontOfLife.png",
+            "name": "生命源泉",
+            "shortDesc": "<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_ImpairMov'>干扰</lol-uikit-tooltipped-keyword>一个敌方英雄的移动可治疗附近的友方英雄们。 ",
+            "longDesc": "干扰敌方英雄的移动可为你和附近生命值最低的友方英雄回复<healing>@BaseHeal@生命值</healing>。<br><br>远程英雄的使用效能为70%。<br><br>冷却时间：20秒"
+          },
+          {
+            "id": 8401,
+            "key": "ShieldBash",
+            "icon": "img/rune/Resolve/MirrorShell/MirrorShell.png",
+            "name": "护盾猛击",
+            "shortDesc": "当你获得一个护盾时，你的下次对英雄发起的普攻造成额外<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自适应</font></lol-uikit-tooltipped-keyword>伤害。",
+            "longDesc": "在带有护盾时，基于等级获得<scaleLevel>1 - 10</scaleLevel>护甲和魔法抗性。<br><br>在你获得一个新的护盾时，你的下一次对英雄发起的普攻造成<scaleLevel>5 - 30</scaleLevel><scaleHealth>(+1.5%额外生命值)</scaleHealth><scaleMana>(+8.5%新护盾值)</scaleMana>额外<lol-uikit-tooltipped-keyword key='LinkTooltip_Description_Adaptive'><font color='#48C4B7'>自适应</font></lol-uikit-tooltipped-keyword>伤害。<br><br>在护盾消散后，你最多有2秒的时间来使用这个效果。"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8429,
+            "key": "Conditioning",
+            "icon": "img/rune/Resolve/Conditioning/Conditioning.png",
+            "name": "调节",
+            "shortDesc": "在12分钟时获得+8护甲和+8魔抗，并使你的额外护甲和额外魔抗提升3%。",
+            "longDesc": "在12分钟时获得+8护甲和+8魔抗，并使你的额外护甲和额外魔抗提升3%。"
+          },
+          {
+            "id": 8444,
+            "key": "SecondWind",
+            "icon": "img/rune/Resolve/SecondWind/SecondWind.png",
+            "name": "复苏之风",
+            "shortDesc": "在受到来自一名敌方英雄的伤害后，会持续治疗一些已损失生命值。",
+            "longDesc": "在你受到来自一名敌方英雄伤害之后，你会在10秒里持续回复生命值，总额相当于你4%已损失生命值 +3。"
+          },
+          {
+            "id": 8473,
+            "key": "BonePlating",
+            "icon": "img/rune/Resolve/BonePlating/BonePlating.png",
+            "name": "骸骨镀层",
+            "shortDesc": "在承受来自一名敌方英雄的伤害后，你所受的下3次来自英雄的技能或攻击将少造成30-60伤害。<br><br>持续时长：1.5秒<br>冷却时间：55秒",
+            "longDesc": "在承受来自一名敌方英雄的伤害后，你所受的下3次来自英雄的技能或攻击将少造成30-60伤害。<br><br>持续时长：1.5秒<br>冷却时间：55秒"
+          }
+        ]
+      },
+      {
+        "runes": [
+          {
+            "id": 8451,
+            "key": "Overgrowth",
+            "icon": "img/rune/Resolve/Overgrowth/Overgrowth.png",
+            "name": "过度生长",
+            "shortDesc": "在附近有小兵或野怪死亡时获得永久最大生命值。",
+            "longDesc": "你附近每有8个野怪或小兵死亡，就会使你永久获得3最大生命值。<br><br>在你吸收了120个野怪或小兵时，提供一个额外的3.5%最大生命值。"
+          },
+          {
+            "id": 8453,
+            "key": "Revitalize",
+            "icon": "img/rune/Resolve/Revitalize/Revitalize.png",
+            "name": "复苏",
+            "shortDesc": "获得5%治疗和护盾强度。<br><br>你对低于40%生命值的目标施放或获得的治疗效果和护盾效果会增强10%。",
+            "longDesc": "获得5%治疗和护盾强度。<br><br>你对低于40%生命值的目标施放或获得的治疗效果和护盾效果会增强10%。"
+          },
+          {
+            "id": 8242,
+            "key": "Unflinching",
+            "icon": "img/rune/Sorcery/Unflinching/Unflinching.png",
+            "name": "坚定",
+            "shortDesc": "在被控制时获得护甲与魔抗。",
+            "longDesc": "在被控制时和之后的2秒里获得2 - 10(随等级增长)护甲和魔法抗性。"
           }
         ]
       }

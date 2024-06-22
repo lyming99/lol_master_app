@@ -1,20 +1,30 @@
 class HeroBaseAttr {
+  // 生命值
   int hp;
   int hpperlevel;
+  // 魔法值
   int mp;
   double mpperlevel;
+  // 移动速度
   int movespeed;
+  // 护甲
   int armor;
   double armorperlevel;
+  // 魔抗
   int spellblock;
   double spellblockperlevel;
+  // 攻击范围
   int attackrange;
+  // 生命回复
   double hpregen;
   double hpregenperlevel;
+  // 魔法回复
   double mpregen;
   double mpregenperlevel;
+  // 暴击
   int crit;
   int critperlevel;
+  // 攻击力
   int attackdamage;
   double attackdamageperlevel;
   double attackspeedperlevel;

@@ -11,6 +11,7 @@ class DeskHeroDetailView extends MvcView<DeskHeroDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
             context.pop();

@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_equip_controller.dart';
 import 'package:lol_master_app/entities/equip/equip_config.dart';
+import 'package:lol_master_app/entities/equip/equip_info.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/widgets/grid_view_fix_size.dart';
 
@@ -68,94 +67,36 @@ class EquipConfigListItemWidget extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 8),
             color: Colors.grey.shade500,
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 8,
-              ),
-              SizedBox(
-                width: 60,
-                child: Title3Widget(
-                  title: "出门装",
+          for (var equipGroup in equipConfig.equipGroupList ?? <EquipGroup>[])
+            Row(
+              children: [
+                SizedBox(
+                  width: 8,
                 ),
-              ),
-              for (var item in equipConfig.startEquipList ?? [])
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
+                SizedBox(
+                  width: 60,
+                  child: Title3Widget(
+                    title: "出门装",
+                  ),
+                ),
+                for (var item in equipGroup.equipList ?? <EquipInfo>[])
+                  Container(
+                    width: 48,
+                    height: 48,
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1,
+                      ),
+                    ),
+                    child: Image.asset(
+                      item.icon ?? "",
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  child: Image.asset(
-                    item.icon ?? "",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 8,
-              ),
-              SizedBox(
-                width: 60,
-                child: Title3Widget(
-                  title: "优先成装",
-                ),
-              ),
-              for (var item in equipConfig.startEquipList ?? [])
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
-                  child: Image.asset(
-                    item.icon ?? "",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 8,
-              ),
-              SizedBox(
-                width: 60,
-                child: Title3Widget(
-                  title: "其余成装",
-                ),
-              ),
-
-              for (var item in equipConfig.startEquipList ?? [])
-                Container(
-                  width: 48,
-                  height: 48,
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
-                  child: Image.asset(
-                    item.icon ?? "",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-            ],
-          ),
+              ],
+            ),
         ],
       ),
     );
