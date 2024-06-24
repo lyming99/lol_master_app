@@ -148,7 +148,6 @@ class LolApiImpl extends LolApi {
   Future<void> putRune(RuneConfig config) async {
     var page = await getCurrentRuneId();
     Dio dio = createDio();
-
     var resp = await dio
         .put("https://127.0.0.1:$port/lol-perks/v1/pages/${page}", data: {
       "autoModifiedSelections": [],
@@ -393,20 +392,19 @@ class LolApiImpl extends LolApi {
   }
 
   @override
-  Future<Map?> queryMatchHistory() async {
+  Future<Map?> queryMatchHistory(String? puuid) async {
     var dio = createDio();
-    var puuid = await getCurrentSummonerPuuid();
-    puuid="1b140cfc-ba73-549e-b548-3ba96f622a21";
+    puuid ??= await getCurrentSummonerPuuid();
     var resp = await dio
-        .get("$baseUrl/lol-match-history/v1/products/lol/$puuid/matches");
+        .get("$baseUrl/lol-match-history/v1/products/lol/$puuid/matches?begIndex=80&endIndex=100");
     return resp.data;
   }
+
   @override
-  Future<Map?> queryGameDetailInfo(String? gameId) async{
+  Future<Map?> queryGameDetailInfo(String? gameId) async {
     ///lol-match-history/v1/games/{gameId}
     var dio = createDio();
-    var resp = await dio
-        .get("$baseUrl/lol-match-history/v1/games/$gameId");
+    var resp = await dio.get("$baseUrl/lol-match-history/v1/games/$gameId");
     return resp.data;
   }
 }

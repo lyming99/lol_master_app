@@ -8,10 +8,9 @@ import 'lol_api_impl.dart';
 abstract class LolApi with ChangeNotifier {
   static LolApi? _instance;
 
-  static LolApi get instance =>
-      _instance ??= LolApiImpl()
-        ..startClientLoop()
-        ..startGameStatusLoop();
+  static LolApi get instance => _instance ??= LolApiImpl()
+    ..startClientLoop()
+    ..startGameStatusLoop();
 
   ValueNotifier<bool> state = ValueNotifier(false);
 
@@ -55,7 +54,7 @@ abstract class LolApi with ChangeNotifier {
 
   Future<String?> getCurrentSummonerPuuid();
 
-  Future<Map?> queryMatchHistory();
+  Future<Map?> queryMatchHistory(String? puuid);
 
   Future<Map?> queryGameDetailInfo(String? gameId);
 }

@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/drawer/app_drawer.dart';
 import 'package:lol_master_app/views/desktop/rune/desk_rune_list_view.dart';
+import 'package:lol_master_app/views/desktop/summoner/match_history_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../../controllers/desktop/desk_home.dart';
@@ -52,34 +54,49 @@ class DeskHomeView extends MvcView<DeskHomeController> {
           Material(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 16),
-              child: TabBar(
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                dividerHeight: 0.1,
-                indicatorSize: TabBarIndicatorSize.tab,
-                padding: const EdgeInsets.symmetric(vertical: 0),
-                tabs: const [
-                  Tab(
-                    text: "英雄",
-                    height: 32,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TabBar(
+                      isScrollable: true,
+                      tabAlignment: TabAlignment.start,
+                      dividerHeight: 0.1,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      padding: const EdgeInsets.symmetric(vertical: 0),
+                      tabs: const [
+                        Tab(
+                          text: "战绩",
+                          height: 32,
+                        ),
+                        Tab(
+                          text: "英雄",
+                          height: 32,
+                        ),
+                        Tab(
+                          text: "符文",
+                          height: 32,
+                        ),
+                        Tab(
+                          text: "装备",
+                          height: 32,
+                        ),
+                      ],
+                      controller: controller.tabController,
+                    ),
                   ),
-                  Tab(
-                    text: "符文",
-                    height: 32,
-                  ),
-                  Tab(
-                    text: "装备",
-                    height: 32,
-                  ),
+
                 ],
-                controller: controller.tabController,
               ),
             ),
           ),
           Expanded(
               child: TabBarView(
             controller: controller.tabController,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
+              DeskMatchHistoryView(
+                controller: controller.matchHistoryController,
+              ),
               DeskHeroListView(
                 controller: controller.heroListController,
               ),
