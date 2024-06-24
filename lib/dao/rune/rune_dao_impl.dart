@@ -55,7 +55,7 @@ class RuneDaoImpl extends RuneDao {
     }
     return list.map((mapItem) {
       return RuneConfig.fromJson(jsonDecode(mapItem["content"]))
-        ..id = mapItem["id"];
+        ..id = mapItem["id"]..heroId = mapItem["heroId"];
     }).toList();
   }
 }

@@ -16,6 +16,8 @@ class DeskEquipConfigController extends MvcController {
 
   EquipInfo? selectedEquipInfo;
 
+  var nameEditFocusNode = FocusNode();
+
   var nameEditController = TextEditingController();
 
   var searchEditController = TextEditingController();
@@ -32,11 +34,18 @@ class DeskEquipConfigController extends MvcController {
 
   int get equipGroupCount => equipConfig.equipGroupList.length;
 
-  String get equipName => equipConfig.name ?? "新的装配方案";
+  String get equipName => equipConfig.name == null || equipConfig.name == ""
+      ? "新的装配方案"
+      : equipConfig.name!;
 
   @override
   void onInitState(BuildContext context, MvcViewState state) {
     super.onInitState(context, state);
+    nameEditFocusNode.addListener(() {
+      if (!nameEditFocusNode.hasFocus) {
+        setShowRenameEdit(false);
+      }
+    });
     fetchData();
   }
 
@@ -65,16 +74,24 @@ class DeskEquipConfigController extends MvcController {
   void setShowRenameEdit(bool value) {
     isShowRenameEdit = value;
     notifyListeners();
+    if (value) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        nameEditFocusNode.requestFocus();
+      });
+    }
   }
 
   void updateName(String value) {
     equipConfig.name = value;
   }
 
-  Future<void> saveConfig() async{
-    if(equipConfig.id==null||equipConfig.id==-1){
+  Future<void> saveConfig() async {
+    if (equipConfig.name == null || equipConfig.name == "") {
+      equipConfig.name = "新的装配方案";
+    }
+    if (equipConfig.id == null || equipConfig.id == -1) {
       await equipDao.addEquipConfig(equipConfig);
-    }else{
+    } else {
       await equipDao.updateEquipConfig(equipConfig);
     }
   }

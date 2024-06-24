@@ -54,14 +54,12 @@ class _ToolNav extends StatelessWidget {
                 controller.isShowRenameEdit
                     ? SizedBox(
                         width: 200,
-                        height: 40,
+                        height: 30,
                         child: TextField(
-                          onTapOutside: (e) {
-                            controller.setShowRenameEdit(false);
-                          },
                           controller: controller.nameEditController,
+                          focusNode: controller.nameEditFocusNode,
                           autofocus: true,
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(fontSize: 16),
                           decoration: InputDecoration(
                             hintText: "请输入装配方案名称",
                             hintStyle: TextStyle(color: Colors.white),
@@ -81,20 +79,39 @@ class _ToolNav extends StatelessWidget {
                           onChanged: (value) {
                             controller.updateName(value);
                           },
+                          onTapOutside: (e) {
+                            controller.setShowRenameEdit(false);
+                          },
                         ),
                       )
-                    : Row(
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                controller.setShowRenameEdit(true);
-                              },
-                              icon: Icon(Icons.edit)),
-                          Text(
-                            controller.equipName,
-                            style: TextStyle(fontSize: 20),
+                    : GestureDetector(
+                        onTap: () {
+                          controller.setShowRenameEdit(true);
+                        },
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                controller.equipName,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              Icon(
+                                Icons.edit,
+                                size: 18,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
               ],
             )),

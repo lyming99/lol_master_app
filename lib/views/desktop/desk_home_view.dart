@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/util/mvc.dart';
+import 'package:lol_master_app/views/desktop/drawer/app_drawer.dart';
 import 'package:lol_master_app/views/desktop/rune/desk_rune_list_view.dart';
-import 'package:lol_master_app/views/desktop/spell/desk_spell_list_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../../controllers/desktop/desk_home.dart';
+import '../../services/api/lol_api.dart';
+import 'account/lol_account_view.dart';
 import 'equip/desk_equip_config_list_view.dart';
 import 'hero/desk_hero_list_view.dart';
 
@@ -16,17 +18,34 @@ class DeskHomeView extends MvcView<DeskHomeController> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: LolAccountIconView(
+              emptyIcon: const Icon(Icons.menu),
+              controller: controller.lolAccountIconController,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          );
+        }),
         backgroundColor: Colors.transparent,
         title: DragToMoveArea(
           child: SizedBox(
             width: MediaQuery.of(context).size.width - 56,
-            child: const Text("LOL大师助手"),
+            child: ValueListenableBuilder(
+              valueListenable: LolApi.instance.state,
+              builder: (BuildContext context, bool value, Widget? child) {
+                var gameName = LolApi.instance.getAccountInfo()?.gameName;
+                return Text(gameName ?? "LOL大师助手");
+              },
+            ),
           ),
         ),
       ),
-      drawer: Container(
-        width: 400,
-        color: Colors.white,
+      drawer: SizedBox(
+        width: 340,
+        child: AppDrawerView(controller: controller.appDrawerController),
       ),
       body: Column(
         children: [

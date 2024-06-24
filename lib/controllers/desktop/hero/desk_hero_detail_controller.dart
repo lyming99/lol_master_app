@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/equip/desk_equip_config_list_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_base_attr_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_combo_controller.dart';
-import 'package:lol_master_app/controllers/desktop/hero/desk_hero_equip_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_note_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_spell_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_rune_controller.dart';
@@ -10,7 +9,6 @@ import 'package:lol_master_app/entities/hero/hero_info.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/equip/desk_equip_config_list_view.dart';
 import 'package:lol_master_app/views/desktop/hero/desk_hero_base_attr_view.dart';
-import 'package:lol_master_app/views/desktop/hero/desk_hero_equip_view.dart';
 import 'package:lol_master_app/views/desktop/hero/desk_hero_note_view.dart';
 import 'package:lol_master_app/views/desktop/hero/desk_hero_spell_view.dart';
 import 'package:lol_master_app/views/desktop/hero/desk_hero_rune_view.dart';
@@ -45,6 +43,7 @@ class DeskHeroDetailController extends MvcController {
     tabController = TabController(length: tabTitles.length, vsync: state);
     heroSpellController.heroId = hero?.heroId;
     heroEquipController.heroId = hero?.heroId??"";
+    heroRuneController.heroId = hero?.heroId;
   }
 
   List<String> get tabTitles => ["技能", "属性", "符文", "装备", "攻略"];

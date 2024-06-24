@@ -15,18 +15,18 @@ class MyDbFactory {
   Future<void> init() async {
     var databasesPath = await getDatabasesPath();
     String path = '$databasesPath/lol.db';
-    await deleteDatabase(path);
     _database = await openDatabase(
       path,
-      version: 3,
+      version: 4,
       onCreate: (Database db, int version) async {
         await createRuneTable(db);
         await createEquipTable(db);
+        await createLolConfigTable(db);
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
-        if (oldVersion <= 2) {
-          await createEquipTable(db);
-        }
+        await createRuneTable(db);
+        await createEquipTable(db);
+        await createLolConfigTable(db);
       },
     );
   }
@@ -37,11 +37,16 @@ class MyDbFactory {
 
   Future<void> createRuneTable(Database database) async {
     await database.execute(
-        'CREATE TABLE RuneConfig (id INTEGER PRIMARY KEY autoincrement, heroId TEXT, name TEXT, content TEXT)');
+        'CREATE TABLE IF NOT EXISTS RuneConfig (id INTEGER PRIMARY KEY autoincrement, heroId TEXT, name TEXT, content TEXT)');
   }
 
   Future<void> createEquipTable(Database database) async {
     await database.execute(
-        'CREATE TABLE EquipConfig (id INTEGER PRIMARY KEY autoincrement, heroId TEXT,name TEXT, content TEXT)');
+        'CREATE TABLE IF NOT EXISTS EquipConfig (id INTEGER PRIMARY KEY autoincrement, heroId TEXT,name TEXT, content TEXT)');
+  }
+
+  Future<void> createLolConfigTable(Database database) async {
+    await database.execute(
+        'CREATE TABLE IF NOT EXISTS LolConfig (id INTEGER PRIMARY KEY autoincrement, configId TEXT, content TEXT)');
   }
 }

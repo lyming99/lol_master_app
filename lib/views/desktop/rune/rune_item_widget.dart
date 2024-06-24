@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lol_master_app/entities/rune/rune.dart';
+import 'package:lol_master_app/services/hero/hero_service_impl.dart';
 import 'package:lol_master_app/services/rune/rune_service_impl.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
@@ -10,10 +11,24 @@ import '../../../widgets/tooltip.dart';
 class RuneItemController extends MvcController {
   RuneConfig? runeConfig;
   bool hover = false;
+  String? heroIcon;
 
   RuneItemController({
     this.runeConfig,
   });
+
+  @override
+  void onInitState(BuildContext context, MvcViewState state) {
+    super.onInitState(context, state);
+    fetchData();
+  }
+
+  bool get hasHeroIcon {
+    if (heroIcon != null) {
+      return true;
+    }
+    return false;
+  }
 
   void onExit() {
     hover = false;
@@ -28,6 +43,15 @@ class RuneItemController extends MvcController {
   Future<void> applyToLolClient() async {
     var runeService = RuneServiceImpl();
     await runeService.applyToLolClient(runeConfig!);
+  }
+
+  Future<void> fetchData() async {
+    // 读取英雄头像数据
+    if (runeConfig?.heroId != null) {
+      var runeService = HeroServiceImpl();
+      heroIcon = await runeService.getHeroIcon(runeConfig?.heroId);
+      notifyListeners();
+    }
   }
 }
 
@@ -168,7 +192,29 @@ class RuneItemWidget extends MvcView<RuneItemController> {
               ),
             ),
           ),
-          Text("${controller.runeConfig?.configName}")
+          SizedBox(
+            height: 28,
+            child: Row(
+              children: [
+                if (controller.hasHeroIcon)
+                  Container(
+                    width: 24,
+                    height: 24,
+                    margin: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.asset("${controller.heroIcon}"),
+                  ),
+                if (!controller.hasHeroIcon)
+                  SizedBox(
+                    width: 4,
+                  ),
+                Expanded(child: Text("${controller.runeConfig?.configName}")),
+              ],
+            ),
+          )
         ],
       ),
     );

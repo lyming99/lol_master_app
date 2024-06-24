@@ -1,5 +1,6 @@
 import 'package:lol_master_app/dao/rune/rune_dao.dart';
 import 'package:lol_master_app/entities/rune/rune.dart';
+import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/api/lol_api_impl.dart';
 import 'package:lol_master_app/services/rune/rune_service.dart';
 
@@ -34,7 +35,6 @@ class RuneServiceImpl extends RuneService {
   Future<void> applyToLolClient(RuneConfig runeConfig) async {
     /// 1.读取客户端的key
     /// 2.将配置发送给客户端
-    var lolApi = LolApiImpl();
-    await lolApi.putRune(runeConfig);
+    await LolApi.instance.putRune(runeConfig);
   }
 }

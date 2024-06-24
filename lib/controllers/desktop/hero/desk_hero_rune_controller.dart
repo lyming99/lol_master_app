@@ -8,7 +8,10 @@ import 'package:lol_master_app/util/mvc.dart';
 class DeskHeroRuneController extends MvcController {
   String? heroId;
   List<RuneConfig> runeConfigList = [];
+  List<RuneConfig> runeConfigFilterList = [];
   RuneService runeService = RuneServiceImpl();
+
+  var searchController = TextEditingController();
 
   DeskHeroRuneController({
     this.heroId,
@@ -22,10 +25,21 @@ class DeskHeroRuneController extends MvcController {
 
   Future<void> fetchData() async {
     runeConfigList = await runeService.getRuneConfigList(heroId ?? "");
-    notifyListeners();
+    search(searchController.text);
   }
 
   Future<void> refresh() async {
     await fetchData();
+  }
+
+  Future<void> search(String value) async {
+    if (value.isEmpty) {
+      runeConfigFilterList = runeConfigList;
+    } else {
+      runeConfigFilterList = runeConfigList.where((element) {
+        return element.configName?.contains(value) == true;
+      }).toList();
+    }
+    notifyListeners();
   }
 }

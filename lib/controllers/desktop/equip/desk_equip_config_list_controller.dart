@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/entities/equip/equip_config.dart';
+import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/equip/equip_service_impl.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
@@ -7,6 +8,9 @@ class DeskEquipConfigListController extends MvcController {
   var heroId = "";
   var equipConfigList = <EquipConfig>[];
   var equipService = EquipServiceImpl();
+  var equipConfigFilterList = <EquipConfig>[];
+
+  var searchController = TextEditingController();
 
   @override
   void onInitState(BuildContext context, MvcViewState state) {
@@ -16,12 +20,27 @@ class DeskEquipConfigListController extends MvcController {
 
   Future<void> fetchData() async {
     equipConfigList = await equipService.getEquipConfigList(heroId);
-    notifyListeners();
+    search(searchController.text);
   }
 
   Future<void> refresh() async {
     return fetchData();
   }
 
-  void applyToLolClient(EquipConfig config) {}
+  Future<void> applyToLolClient(EquipConfig config) async {
+    var data = await LolApi.instance.putEquipConfig(config);
+    print('$data');
+  }
+
+  Future<void> search(String value) async {
+    if (value.isEmpty) {
+      equipConfigFilterList = equipConfigList;
+      notifyListeners();
+      return;
+    }
+    equipConfigFilterList = equipConfigList.where((element) {
+      return element.name!.contains(value);
+    }).toList();
+    notifyListeners();
+  }
 }

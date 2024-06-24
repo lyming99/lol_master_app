@@ -8,6 +8,8 @@ import 'package:lol_master_app/entities/hero/hero_spell.dart';
 import 'hero_service.dart';
 
 class HeroServiceImpl implements HeroService {
+  List<HeroInfo>? heroList;
+
   Future<Map<String, HeroInfo>> getHeroPositionInfo() async {
     var positionJsonStr =
         await rootBundle.loadString("assets/lol/data/heroPosition.json");
@@ -50,29 +52,33 @@ class HeroServiceImpl implements HeroService {
 
   @override
   Future<List<HeroInfo>> getHeroList() async {
-    var heroPositionMap = await getHeroPositionInfo();
-    var jsonStr = await rootBundle.loadString("assets/lol/data/champion.json");
-    var heroJson = jsonDecode(jsonStr);
-    var heroMap = heroJson["data"] as Map;
-    var heroList = <HeroInfo>[];
-    for (var heroItem in heroMap.values) {
-      var id = heroItem["id"] as String;
-      var name = heroItem["name"] as String;
-      var nickname = heroItem["title"] as String;
-      var attr = HeroBaseAttr.fromJson(heroItem["stats"]);
-      heroList.add(
-        HeroInfo(
-          heroId: heroItem["key"],
-          name: name,
-          nickname: nickname,
-          iconUrl: "assets/lol/img/champion/$id.png",
-          baseAttr: attr,
-          searchKey: heroPositionMap[id]?.searchKey ?? "$name,$nickname",
-          roadType: heroPositionMap[id]?.roadType,
-        ),
-      );
+    if (heroList == null) {
+      var heroPositionMap = await getHeroPositionInfo();
+      var jsonStr =
+          await rootBundle.loadString("assets/lol/data/champion.json");
+      var heroJson = jsonDecode(jsonStr);
+      var heroMap = heroJson["data"] as Map;
+      var heroList = <HeroInfo>[];
+      for (var heroItem in heroMap.values) {
+        var id = heroItem["id"] as String;
+        var name = heroItem["name"] as String;
+        var nickname = heroItem["title"] as String;
+        var attr = HeroBaseAttr.fromJson(heroItem["stats"]);
+        heroList.add(
+          HeroInfo(
+            heroId: heroItem["key"],
+            name: name,
+            nickname: nickname,
+            iconUrl: "assets/lol/img/champion/$id.png",
+            baseAttr: attr,
+            searchKey: heroPositionMap[id]?.searchKey ?? "$name,$nickname",
+            roadType: heroPositionMap[id]?.roadType,
+          ),
+        );
+      }
+      this.heroList = heroList;
     }
-    return heroList;
+    return heroList!;
   }
 
   @override
@@ -84,5 +90,24 @@ class HeroServiceImpl implements HeroService {
   Future<List<HeroSpell>> getHeroSpell(String id) {
     // TODO: implement getHeroSpell
     throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> getHeroIcon(String? heroId) async {
+    if (heroId == null) {
+      return null;
+    }
+    var list = await getHeroList();
+    var first = list.where((element) => element.heroId == heroId).firstOrNull;
+    return first?.iconUrl;
+  }
+
+  @override
+  Future<HeroInfo?> getHeroInfo(String? heroId) async {
+    if (heroId == null) {
+      return null;
+    }
+    var list = await getHeroList();
+    return list.where((element) => element.heroId == heroId).firstOrNull;
   }
 }

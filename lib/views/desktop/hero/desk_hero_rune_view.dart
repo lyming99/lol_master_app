@@ -24,13 +24,17 @@ class DeskHeroRuneView extends MvcView<DeskHeroRuneController> {
                 child: SizedBox(
                   height: 40,
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "搜索符文",
                       prefixIcon: Icon(Icons.search),
                       border: OutlineInputBorder(),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                     ),
+                    controller: controller.searchController,
+                    onChanged: (value){
+                      controller.search(value);
+                    },
                   ),
                 ),
               ),
@@ -76,13 +80,13 @@ class DeskHeroRuneView extends MvcView<DeskHeroRuneController> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             gridDelegate: SliverGridDelegateWithFixedSize(
               itemWidth: 120,
-              itemHeight: 240,
+              itemHeight: 250,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
-            itemCount: controller.runeConfigList.length,
+            itemCount: controller.runeConfigFilterList.length,
             itemBuilder: (context, index) {
-              var runeConfig = controller.runeConfigList[index];
+              var runeConfig = controller.runeConfigFilterList[index];
               return GestureDetector(
                 onTap: () {
                   showCreateRuneDialog(context, config: runeConfig);

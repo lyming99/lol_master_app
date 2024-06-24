@@ -122,6 +122,7 @@ class RuneConfig {
       primaryRuneKey: json["primaryRuneKey"],
       secondaryRuneKey: json["secondaryRuneKey"],
       configName: json["configName"],
+      heroId: json["heroId"],
     );
   }
 
@@ -134,6 +135,7 @@ class RuneConfig {
       "primaryRuneKey": primaryRuneKey,
       "secondaryRuneKey": secondaryRuneKey,
       "configName": configName,
+      "heroId": heroId,
     };
   }
 }

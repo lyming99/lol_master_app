@@ -1,0 +1,50 @@
+{
+  "accountId": 17326057416,
+  "itemSets": [
+    {
+      "associatedChampions": [],
+      "associatedMaps": [
+        11,
+        12
+      ],
+      "blocks": [
+        {
+          "hideIfSummonerSpell": "",
+          "items": [
+            {
+              "count": 1,
+              "id": "2501"
+            }
+          ],
+          "showIfSummonerSpell": "",
+          "type": "新的区块"
+        }
+      ],
+      "map": "any",
+      "mode": "any",
+      "preferredItemSlots": [],
+      "sortrank": 0,
+      "startedFrom": "blank",
+      "title": "新的配装方案",
+      "type": "custom",
+      "uid": "f6ee4740-15f0-11ef-86c1-f5f2868e59c0"
+    },
+    {
+      "associatedChampions": [],
+      "associatedMaps": [
+        11,
+        12
+      ],
+      "blocks": [],
+      "map": "any",
+      "mode": "any",
+      "preferredItemSlots": [],
+      "sortrank": 0,
+      "startedFrom": "blank",
+      "title": "新的配装方案 (1)",
+      "type": "custom",
+      "uid": "df188720-2ffe-11ef-8250-854bc12f9572"
+    }
+  ],
+  "timestamp": 0
+}

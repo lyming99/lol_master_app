@@ -1,0 +1,24 @@
+{
+  "accountId": 17326057416,
+  "displayName": "我赌你R没有CD",
+  "gameName": "果冻橙橙",
+  "internalName": "我赌你R没有CD",
+  "nameChangeFlag": false,
+  "percentCompleteForNextLevel": 80,
+  "privacy": "PUBLIC",
+  "profileIconId": 1301,
+  "puuid": "3ee718c8-d5c0-550f-bfed-0489d6729438",
+  "rerollPoints": {
+    "currentPoints": 500,
+    "maxRolls": 2,
+    "numberOfRolls": 2,
+    "pointsCostToRoll": 250,
+    "pointsToReroll": 0
+  },
+  "summonerId": 17326057416,
+  "summonerLevel": 75,
+  "tagLine": "91998",
+  "unnamed": false,
+  "xpSinceLastLevel": 2075,
+  "xpUntilNextLevel": 2592
+}
