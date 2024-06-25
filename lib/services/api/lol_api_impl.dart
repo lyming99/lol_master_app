@@ -392,19 +392,29 @@ class LolApiImpl extends LolApi {
   }
 
   @override
-  Future<Map?> queryMatchHistory(String? puuid) async {
+  Future<Map?> queryMatchHistory(String? puuid, int pageIndex) async {
     var dio = createDio();
-    puuid ??= await getCurrentSummonerPuuid();
-    var resp = await dio
-        .get("$baseUrl/lol-match-history/v1/products/lol/$puuid/matches?begIndex=80&endIndex=100");
+    if (puuid == null || puuid == "") {
+      puuid = await getCurrentSummonerPuuid();
+    }
+    var resp = await dio.get(
+        "$baseUrl/lol-match-history/v1/products/lol/$puuid/matches?begIndex=${pageIndex * 10}&endIndex=${pageIndex * 10 + 10}");
     return resp.data;
   }
 
   @override
-  Future<Map?> queryGameDetailInfo(String? gameId) async {
+  Future<Map?> queryGameDetailInfo(int? gameId) async {
     ///lol-match-history/v1/games/{gameId}
     var dio = createDio();
     var resp = await dio.get("$baseUrl/lol-match-history/v1/games/$gameId");
+    return resp.data;
+  }
+
+  @override
+  Future<Map?> queryRankInfo(String? puuid) async {
+    /// /lol-ranked/v1/ranked-stats/{puuid}
+    var dio = createDio();
+    var resp = await dio.get("$baseUrl/lol-ranked/v1/ranked-stats/$puuid");
     return resp.data;
   }
 }

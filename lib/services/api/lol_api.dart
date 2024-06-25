@@ -54,7 +54,9 @@ abstract class LolApi with ChangeNotifier {
 
   Future<String?> getCurrentSummonerPuuid();
 
-  Future<Map?> queryMatchHistory(String? puuid);
+  Future<Map?> queryMatchHistory(String? puuid,int pageIndex);
 
-  Future<Map?> queryGameDetailInfo(String? gameId);
+  Future<Map?> queryGameDetailInfo(int? gameId);
+
+  Future<Map?> queryRankInfo(String? puuid);
 }

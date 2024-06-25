@@ -1,0 +1,175 @@
+{
+  "summonerskill": {
+    "1": {
+      "name": "净化",
+      "description": "移除身上的所有限制效果（压制效果和击飞效果除外）和召唤师技能的减益效果，并提供持续3秒的75%韧性。",
+      "summonerlevel": "9",
+      "cooldown": "240",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,一对一模式,源计划,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_boost.png"
+    },
+    "3": {
+      "name": "虚弱",
+      "description": "使目标英雄减速40%并将其造成的伤害削减35%，持续3秒。",
+      "summonerlevel": "4",
+      "cooldown": "240",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_exhaust.png"
+    },
+    "4": {
+      "name": "闪现",
+      "description": "使你朝着你的指针位置瞬间传送一小段距离。",
+      "summonerlevel": "7",
+      "cooldown": "300",
+      "gamemode": "训练模式,经典,峡谷大乱斗,极地大乱斗,,教学,一对一模式,末日人机,无限火力,源计划,冰雪无限火力,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_flash.png"
+    },
+    "5": {
+      "name": "",
+      "description": "",
+      "summonerlevel": "4",
+      "cooldown": "180",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_Backtrack.png"
+    },
+    "6": {
+      "name": "幽灵疾步",
+      "description": "获得24 - 48%移动速度并无视单位的碰撞体积，持续10秒。",
+      "summonerlevel": "1",
+      "cooldown": "240",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,一对一模式,源计划,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_haste.png"
+    },
+    "7": {
+      "name": "治疗术",
+      "description": "为你和目标友军英雄回复80-318生命值，并为你和目标友军英雄提供持续1秒的30%移动速度。若目标近期已受到过其它治疗术的影响，则治疗术对目标产生的治疗效果减半。",
+      "summonerlevel": "1",
+      "cooldown": "240",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,源计划,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_heal.png"
+    },
+    "11": {
+      "name": "惩戒",
+      "description": "对目标大型野怪造成600~1200真实伤害。",
+      "summonerlevel": "3",
+      "cooldown": "15",
+      "gamemode": "无限火力,经典,峡谷大乱斗,克隆大作战,训练模式,,教学,末日人机",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_smite.png"
+    },
+    "12": {
+      "name": "传送",
+      "description": "在引导4秒后，传送到友方建筑物旁边。会在10分钟时升级为【解封的传送】，【解封的传送】允许你选择友方建筑物、友方小兵或友方守卫作为目标。",
+      "summonerlevel": "7",
+      "cooldown": "360",
+      "gamemode": "克隆大作战,训练模式,经典,教学,,峡谷大乱斗,末日人机",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_teleport.png"
+    },
+    "13": {
+      "name": "清晰术",
+      "description": "为你的英雄回复50%的最大法力值。也会为周围的友军回复25%的最大法力值",
+      "summonerlevel": "6",
+      "cooldown": "240",
+      "gamemode": "极地大乱斗,一对一模式",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/SummonerMana.png"
+    },
+    "14": {
+      "name": "引燃",
+      "description": "在5秒的持续时间里对目标敌方英雄造成共70-410真实伤害并在持续期间降低目标受到的治疗效果。",
+      "summonerlevel": "9",
+      "cooldown": "180",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,一对一模式,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/SummonerIgnite.png"
+    },
+    "21": {
+      "name": "屏障",
+      "description": "获得120-480护盾值，持续2.5秒。",
+      "summonerlevel": "4",
+      "cooldown": "180",
+      "gamemode": "无限火力,经典,峡谷大乱斗,极地大乱斗,,教学,末日人机,训练模式,一对一模式,源计划,克隆大作战",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/SummonerBarrier.png"
+    },
+    "30": {
+      "name": "护驾！",
+      "description": "快速位移到魄罗之王旁边。",
+      "summonerlevel": "1",
+      "cooldown": "10",
+      "gamemode": "魄罗大乱斗",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Benevolence_Of_King_Poro_Icon.png"
+    },
+    "31": {
+      "name": "魄罗投掷",
+      "description": "把一个魄罗投向你的敌人。如果它命中了一名敌人，那么你接下来就可以快速位移到被命中的敌人旁边。",
+      "summonerlevel": "1",
+      "cooldown": "20",
+      "gamemode": "魄罗大乱斗",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/summonerskill/SummonerPoroThrow.png"
+    },
+    "32": {
+      "name": "标记",
+      "description": "沿直线扔出一个雪球。如果雪球命中了一个敌人，那么这个敌人会被【标记】，提供真实视野，并且你的英雄接下来可以快速突进到被【标记】的目标旁边。",
+      "summonerlevel": "6",
+      "cooldown": "80",
+      "gamemode": "极地大乱斗,一对一模式",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_Mark.png"
+    },
+    "39": {
+      "name": "标记",
+      "description": "沿直线扔出一个雪球。如果雪球命中了一个敌人，那么这个敌人会被【标记】，提供真实视野，并且你的英雄接下来可以快速突进到被【标记】的目标旁边。",
+      "summonerlevel": "6",
+      "cooldown": "80",
+      "gamemode": "冰雪无限火力",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_Mark.png"
+    },
+    "54": {
+      "name": "占位",
+      "description": "这个栏位将在游戏开始后，被替换为所选的另一位英雄的终极技能。届时将有30秒的时间选择一个终极技能。请做好准备！",
+      "summonerlevel": "1",
+      "cooldown": "0",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_Empty.png"
+    },
+    "55": {
+      "name": "占位和攻击惩戒",
+      "description": "这个栏位将在游戏开始后，被替换为所选的另一位英雄的终极技能并且你将获得【攻击惩戒】。届时将有30秒的时间选择一个终极技能。请做好准备！",
+      "summonerlevel": "1",
+      "cooldown": "0",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_EmptySmite.png"
+    },
+    "2201": {
+      "name": "闪人",
+      "description": "获得短暂的爆发性移动速度，这个移速会在逃离敌方英雄时提升。",
+      "summonerlevel": "1",
+      "cooldown": "45",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Icon_SummonerSpell_Flee.2v2_Mode_Fighters.png"
+    },
+    "2202": {
+      "name": "闪现",
+      "description": "使英雄朝着你的指针悬停的位置瞬间传送一小段距离。",
+      "summonerlevel": "1",
+      "cooldown": "0",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_flash.png"
+    },
+    "2203": {
+      "name": "闪现",
+      "description": "使英雄朝着你的指针悬停的位置瞬间传送一小段距离。",
+      "summonerlevel": "1",
+      "cooldown": "3",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/Summoner_flash.png"
+    },
+    "2147483647": {
+      "name": "原初惩戒",
+      "description": "",
+      "summonerlevel": "3",
+      "cooldown": "15",
+      "gamemode": "",
+      "icon": "https://game.gtimg.cn/images/lol/act/img/spell/1102_Smite.png"
+    }
+  },
+  "version": "14.12",
+  "fileName": "summonerskill_list.js",
+  "fileTime": "2024-06-18 16:47:33"
+}

@@ -208,6 +208,11 @@ class AppDrawerView extends MvcView<AppDrawerController> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: const Text(
+                        "本软件未获得 Riot Games 的认可，也不反映 Riot Games 或任何正式参与制作或管理 Riot Games 财产的人的观点或意见。"),
+                  ),
                 ],
               ),
             ),
@@ -248,7 +253,8 @@ class AppDrawerController extends MvcController {
 
   Future<void> fetchData() async {
     heroList = await HeroService.instance.getHeroList();
-    lolConfig = (await LolConfigService.instance.getCurrentConfig()) ?? LolConfig();
+    lolConfig =
+        (await LolConfigService.instance.getCurrentConfig()) ?? LolConfig();
     var primaryInfo = await HeroService.instance
         .getHeroInfo(lolConfig?.primaryHero.toString() ?? "0");
     primaryHeroController.setSelectHero(primaryInfo);
