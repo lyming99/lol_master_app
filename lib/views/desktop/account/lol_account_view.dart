@@ -39,7 +39,7 @@ class LolAccountView extends MvcView<LolAccountController> {
                       ),
                       borderRadius: BorderRadius.circular(60),
                       image: DecorationImage(
-                        image: AssetImage(controller.accountIcon),
+                        image: NetworkImage(controller.accountIcon),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -106,7 +106,7 @@ class LolAccountIconView extends MvcView<LolAccountIconController> {
               ),
               borderRadius: BorderRadius.circular(60),
               image: DecorationImage(
-                image: AssetImage(controller.accountIcon),
+                image: NetworkImage(controller.accountIcon),
                 fit: BoxFit.cover,
               ),
             ),

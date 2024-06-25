@@ -134,6 +134,25 @@ class DeskMatchHistoryController extends MvcController {
   void onInitState(BuildContext context, MvcViewState state) {
     super.onInitState(context, state);
     fetchData();
+    LolApi.instance.addListener(refreshOnClientUpdateStatus);
+  }
+
+  @override
+  void onDispose() {
+    super.onDispose();
+    LolApi.instance.removeListener(refreshOnClientUpdateStatus);
+  }
+
+  @override
+  void onDidUpdateWidget(BuildContext context,
+      covariant DeskMatchHistoryController oldController) {
+    super.onDidUpdateWidget(context, oldController);
+    pageInfoQueue = oldController.pageInfoQueue;
+    currentPageInfoIndex = oldController.currentPageInfoIndex;
+    loadingList = oldController.loadingList;
+    loadingDetail = oldController.loadingDetail;
+    LolApi.instance.removeListener(oldController.refreshOnClientUpdateStatus);
+    LolApi.instance.addListener(refreshOnClientUpdateStatus);
   }
 
   PageInfo? get currentPage {
@@ -213,6 +232,18 @@ class DeskMatchHistoryController extends MvcController {
   Future<void> refresh() async {
     currentPage?.historyInfoList = null;
     await fetchData();
+  }
+
+  // 如果用户id更新了，则刷新
+  Future<void> refreshOnClientUpdateStatus() async {
+    if (pageInfoQueue.isEmpty) {
+      await refresh();
+      return;
+    }
+    var currentClientId = pageInfoQueue.first.userName;
+    if (currentClientId != LolApi.instance.getAccountInfo()?.gameName) {
+      await refresh();
+    }
   }
 
   // 获取战绩列表
@@ -408,5 +439,14 @@ class DeskMatchHistoryController extends MvcController {
     }
     var currentIndex = currentPage?.pageIndex ?? 0;
     open(currentPage?.puuid, currentIndex + 1);
+  }
+
+  Future<void> searchSummoner(String value) async {
+    var split = value.split("#");
+    var puuid = await LolApi.instance.queryPuuidByAlias(split[0], split[1]);
+    if (puuid == null) {
+      return;
+    }
+    open(puuid, 0);
   }
 }

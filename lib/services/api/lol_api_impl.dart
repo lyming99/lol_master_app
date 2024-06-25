@@ -270,7 +270,7 @@ class LolApiImpl extends LolApi {
 
   @override
   String getAccountIcon() {
-    return "assets/lol/img/profileicon/${accountInfo?.profileIconId}.png";
+    return "https://game.gtimg.cn/images/lol/act/img/profileicon/${accountInfo?.profileIconId}.png";
   }
 
   Future<LolAccountInfo?> queryAccountInfo() async {
@@ -416,6 +416,22 @@ class LolApiImpl extends LolApi {
     var dio = createDio();
     var resp = await dio.get("$baseUrl/lol-ranked/v1/ranked-stats/$puuid");
     return resp.data;
+  }
+
+  @override
+  Future<List<String>> querySummonerIdList(String name) async {
+    var dio = createDio();
+    var resp = await dio.get("$baseUrl/lol-summoner/v1/summoners?name=$name");
+    return resp.data;
+  }
+
+  @override
+  Future<String?> queryPuuidByAlias(
+      String gameName, String tagLine) async {
+    var dio = createDio();
+    var resp = await dio.get(
+        "$baseUrl/lol-summoner/v1/alias/lookup?gameName=$gameName&tagLine=$tagLine");
+    return resp.data['puuid'];
   }
 }
 

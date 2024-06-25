@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 typedef MvcBuilder<T> = Widget Function(T controller);
 
+// 也可以封装mvvm，mvp，看看相关文章
 class MvcView<T extends MvcController> extends StatefulWidget {
   final T controller;
   final MvcBuilder<T>? builder;

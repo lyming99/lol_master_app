@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lol_master_app/controllers/desktop/summoner/match_history_controller.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
@@ -33,6 +31,9 @@ class DeskMatchHistoryView extends MvcView<DeskMatchHistoryController> {
                   ),
                   style: const TextStyle(fontSize: 14),
                   onChanged: (value) {},
+                  onSubmitted: (value) {
+                    controller.searchSummoner(value);
+                  },
                 ),
               ),
               Spacer(),

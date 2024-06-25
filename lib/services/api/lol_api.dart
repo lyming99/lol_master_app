@@ -59,4 +59,9 @@ abstract class LolApi with ChangeNotifier {
   Future<Map?> queryGameDetailInfo(int? gameId);
 
   Future<Map?> queryRankInfo(String? puuid);
+
+  /// @deprecated 无法使用
+  Future<List<String>> querySummonerIdList(String name);
+
+  Future<String?> queryPuuidByAlias(String gameName,String tagLine);
 }
