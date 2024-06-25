@@ -23,6 +23,7 @@ class LolAccountView extends MvcView<LolAccountController> {
         if (!controller.isLogin) {
           return const Text("未登录");
         }
+        // div
         return Column(
           children: [
             Padding(

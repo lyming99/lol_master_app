@@ -201,8 +201,7 @@ class _MatchHistoryListView extends StatelessWidget {
             ),
             Expanded(
                 child: Center(
-                    child: Text(
-                        controller.currentPage?.pageIndex.toString() ?? ""))),
+                    child: Text(controller.currentPage?.pageIndexStr ?? ""))),
             IconButton(
               onPressed: controller.canToNextPage
                   ? () {
@@ -225,13 +224,16 @@ class _MatchHistoryListView extends StatelessWidget {
       var queueId = info?.queueId;
       switch (queueId) {
         case 420:
-          return "排位";
+          return "单双排";
+        case 430:
+          return "匹配";
         case 440:
           return "灵活排位";
         case 890:
           return "人机模式";
-        case 450:
-          return "匹配";
+        case 1700:
+          return "斗魂竞技场";
+
       }
     }
     return "未知";

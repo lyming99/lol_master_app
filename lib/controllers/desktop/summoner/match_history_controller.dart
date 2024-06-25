@@ -6,6 +6,7 @@ import 'package:lol_master_app/util/mvc.dart';
 
 class PageInfo {
   String puuid;
+
   var pageIndex = 0;
 
   // 用户点击的当前游戏id
@@ -23,6 +24,8 @@ class PageInfo {
     required this.puuid,
     this.pageIndex = 0,
   });
+
+  String get pageIndexStr => (pageIndex + 1).toString();
 }
 
 // 需要heroId、gameId、游戏类型(11是排位)、游戏日期、胜利与否
@@ -343,7 +346,7 @@ class DeskMatchHistoryController extends MvcController {
         if (rankInfo != null) {
           player.rankLevel1 =
               getRankLevel1Str(rankInfo["highestPreviousSeasonEndTier"]);
-          player.rankLevel2 = rankInfo["highestPreviousSeasonEndDivision"];
+          player.rankLevel2 = getRankLevel2Str(rankInfo);
         }
         player.kills = item["stats"]["kills"];
         player.deaths = item["stats"]["deaths"];
@@ -384,6 +387,14 @@ class DeskMatchHistoryController extends MvcController {
     }
   }
 
+  String getRankLevel2Str(Map<dynamic, dynamic> rankInfo) {
+    var ret = rankInfo["highestPreviousSeasonEndDivision"];
+    if (ret == "NA") {
+      return "未定级";
+    }
+    return ret;
+  }
+
   Future<void> changeGameId(int? gameId) async {
     currentPage?.currentGameId = gameId;
     await getMatchDetail();
@@ -411,6 +422,8 @@ class DeskMatchHistoryController extends MvcController {
         return "傲娇宗师";
       case "CHALLENGER":
         return "最强王者";
+      case "NA":
+        return "未定级";
       default:
         return rankInfo;
     }
