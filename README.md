@@ -3,20 +3,20 @@
 一个学习 flutter 开发的小工具，目标是帮助玩家练习打LOL,成为英雄联盟大师的同时，学会 Flutter 编程技术。
 ## 软件截图
 ### 战绩查询
-![img.png](snapshot/img1.png)
+![img.png](./snapshot/img1.png)
 
 ### 英雄列表
-![img_1.png](snapshot/img_1.png)
+![img_1.png](./snapshot/img_1.png)
 ### 英雄详情
-![img_6.png](snapshot/img_6.png)
+![img_6.png](./snapshot/img_6.png)
 ### 符文配置
-![img_2.png](snapshot/img_2.png)
+![img_2.png](./snapshot/img_2.png)
 ### 装备配置
-![img_3.png](snapshot/img_3.png)
+![img_3.png](./snapshot/img_3.png)
 ### 大哥分析
-![img_4.png](snapshot/img_4.png)
+![img_4.png](./snapshot/img_4.png)
 ### 游戏设置
-![img_5.png](snapshot/img_5.png)
+![img_5.png](./snapshot/img_5.png)
 
 ### 最初始的样子
 
