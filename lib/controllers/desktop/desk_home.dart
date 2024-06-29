@@ -5,6 +5,7 @@ import 'package:lol_master_app/controllers/desktop/summoner/match_history_contro
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/account/lol_account_view.dart';
 import 'package:lol_master_app/views/desktop/drawer/app_drawer.dart';
+import 'package:lol_master_app/views/desktop/game_info/desk_game_info_view.dart';
 
 import 'equip/desk_equip_config_list_controller.dart';
 import 'hero/desk_hero_list_controller.dart';
@@ -27,10 +28,12 @@ class DeskHomeController extends MvcController {
 
   var matchHistoryController = DeskMatchHistoryController();
 
+  var gameInfoController = DeskGameInfoController();
+
   @override
   void onInitState(BuildContext context, MvcViewState state) {
     super.onInitState(context, state);
-    tabController = TabController(length: 4, vsync: state);
+    tabController = TabController(length: 5, vsync: state);
   }
 
   @override
@@ -44,6 +47,6 @@ class DeskHomeController extends MvcController {
     itemListController = oldController.itemListController;
     spellListController = oldController.spellListController;
     runeListController = oldController.runeListController;
-
+    gameInfoController = oldController.gameInfoController;
   }
 }

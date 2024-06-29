@@ -204,13 +204,38 @@ class AppDrawerView extends MvcView<AppDrawerController> {
                               ],
                             ),
                           ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          SizedBox(
+                            height: 36,
+                            child: Row(
+                              children: [
+                                const Expanded(
+                                    child: Text(
+                                  "备选英雄",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                )),
+                                SizedBox(
+                                  child: HeroSelectDropdown(
+                                    controller: controller.thirdHeroController,
+                                    onChanged: (value) {
+                                      controller.setThirdSelectHero(value);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: const Text(
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Text(
                         "本软件未获得 Riot Games 的认可，也不反映 Riot Games 或任何正式参与制作或管理 Riot Games 财产的人的观点或意见。"),
                   ),
                 ],
@@ -230,6 +255,8 @@ class AppDrawerController extends MvcController {
 
   var secondaryHeroController = HeroSelectController();
 
+  var thirdHeroController = HeroSelectController();
+
   var lolAccountController = LolAccountController();
 
   LolConfig? lolConfig;
@@ -247,6 +274,7 @@ class AppDrawerController extends MvcController {
     heroList = oldController.heroList;
     primaryHeroController = oldController.primaryHeroController;
     secondaryHeroController = oldController.secondaryHeroController;
+    thirdHeroController = oldController.thirdHeroController;
     lolAccountController = oldController.lolAccountController;
     lolConfig = oldController.lolConfig;
   }
@@ -261,6 +289,9 @@ class AppDrawerController extends MvcController {
     var secondaryInfo = await HeroService.instance
         .getHeroInfo(lolConfig?.secondaryHero.toString() ?? "0");
     secondaryHeroController.setSelectHero(secondaryInfo);
+    var thirdInfo = await HeroService.instance
+        .getHeroInfo(lolConfig?.thirdHero.toString() ?? "0");
+    thirdHeroController.setSelectHero(thirdInfo);
     notifyListeners();
   }
 
@@ -287,6 +318,11 @@ class AppDrawerController extends MvcController {
 
   void setSecondarySelectHero(HeroInfo? item) {
     lolConfig?.secondaryHero = int.parse(item?.heroId ?? "0");
+    saveConfig();
+  }
+
+  void setThirdSelectHero(HeroInfo? item) {
+    lolConfig?.thirdHero = int.parse(item?.heroId ?? "0");
     saveConfig();
   }
 

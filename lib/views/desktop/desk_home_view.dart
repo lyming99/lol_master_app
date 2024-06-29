@@ -10,6 +10,7 @@ import '../../controllers/desktop/desk_home.dart';
 import '../../services/api/lol_api.dart';
 import 'account/lol_account_view.dart';
 import 'equip/desk_equip_config_list_view.dart';
+import 'game_info/desk_game_info_view.dart';
 import 'hero/desk_hero_list_view.dart';
 
 class DeskHomeView extends MvcView<DeskHomeController> {
@@ -80,6 +81,10 @@ class DeskHomeView extends MvcView<DeskHomeController> {
                           text: "装备",
                           height: 32,
                         ),
+                        Tab(
+                          text: "对局信息",
+                          height: 32,
+                        ),
                       ],
                       controller: controller.tabController,
                     ),
@@ -105,6 +110,9 @@ class DeskHomeView extends MvcView<DeskHomeController> {
               ),
               DeskEquipConfigListView(
                 controller: controller.itemListController,
+              ),
+              DeskGameInfoView(
+                controller: controller.gameInfoController,
               ),
             ],
           )),

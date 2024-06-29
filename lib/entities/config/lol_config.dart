@@ -10,6 +10,7 @@ class LolConfig {
   bool? autoSelect;
   int? primaryHero;
   int? secondaryHero;
+  int? thirdHero;
 
   LolConfig({
     this.id,
@@ -19,6 +20,7 @@ class LolConfig {
     this.autoSelect,
     this.primaryHero,
     this.secondaryHero,
+    this.thirdHero,
   });
 
   factory LolConfig.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class LolConfig {
       autoSelect: json['autoSelect'],
       primaryHero: json['primaryHero'],
       secondaryHero: json['secondaryHero'],
+      thirdHero: json['thirdHero'],
     );
   }
 
@@ -42,6 +45,7 @@ class LolConfig {
       'autoSelect': autoSelect,
       'primaryHero': primaryHero,
       'secondaryHero': secondaryHero,
+      'thirdHero': thirdHero,
     };
   }
 }

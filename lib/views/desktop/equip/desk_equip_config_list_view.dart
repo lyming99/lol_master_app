@@ -4,7 +4,6 @@ import 'package:lol_master_app/controllers/desktop/equip/desk_equip_config_list_
 import 'package:lol_master_app/entities/equip/equip_config.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/hero/hero_service.dart';
-import 'package:lol_master_app/services/hero/hero_service_impl.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/equip/desk_equip_config_view.dart';
 import 'package:lol_master_app/views/desktop/equip/desk_equip_list_view.dart';

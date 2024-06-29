@@ -14,6 +14,9 @@ class HeroSelectDropdown extends MvcView<HeroSelectController> {
 
   @override
   Widget build(BuildContext context) {
+    if (controller.heroList.isEmpty) {
+      return Container();
+    }
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xfff6dba6)),
@@ -82,6 +85,9 @@ class HeroSelectController extends MvcController {
 
   Future<void> fetchData() async {
     heroList = await HeroService.instance.getHeroList();
+    if (heroList.isNotEmpty) {
+      selectHero ??= heroList.first;
+    }
     notifyListeners();
   }
 }

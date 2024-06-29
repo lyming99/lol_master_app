@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/summoner/match_history_controller.dart';
+import 'package:lol_master_app/entities/lol/game_info.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
 import 'horizontal_button_widget.dart';
@@ -17,7 +18,7 @@ class DeskMatchHistoryView extends MvcView<DeskMatchHistoryController> {
           child: Row(
             children: [
               Container(
-                width: 200,
+                width: 300,
                 constraints: const BoxConstraints(maxHeight: 36),
                 margin: EdgeInsets.only(left: 4),
                 child: TextField(
@@ -36,7 +37,7 @@ class DeskMatchHistoryView extends MvcView<DeskMatchHistoryController> {
                   },
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               HorizontalButtonWidget(
                 onPressed: !controller.canBack
                     ? null
@@ -233,7 +234,6 @@ class _MatchHistoryListView extends StatelessWidget {
           return "人机模式";
         case 1700:
           return "斗魂竞技场";
-
       }
     }
     return "未知";
@@ -440,7 +440,12 @@ class _TeamPlayerListWidget extends StatelessWidget {
                                     child: (value == null ||
                                             value == "" ||
                                             value == "0")
-                                        ? null
+                                        ? Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Color(0x33cccccc)),
+                                            ),
+                                          )
                                         : Image.asset(
                                             "assets/lol/img/item/$value.png"),
                                   ),

@@ -1,0 +1,24 @@
+[
+  {
+    "body": "joined_room",
+    "fromId": "3ee718c8-d5c0-550f-bfed-0489d6729438",
+    "fromObfuscatedSummonerId": 0,
+    "fromPid": "3ee718c8-d5c0-550f-bfed-0489d6729438@pvp.net",
+    "fromSummonerId": 17326057416,
+    "id": "m_08bb1ed268a37e01",
+    "isHistorical": false,
+    "timestamp": "2024-06-26T01:02:34.815Z",
+    "type": "system"
+  },
+  {
+    "body": "666",
+    "fromId": "3ee718c8-d5c0-550f-bfed-0489d6729438@pvp.net",
+    "fromObfuscatedSummonerId": 0,
+    "fromPid": "3ee718c8-d5c0-550f-bfed-0489d6729438@pvp.net",
+    "fromSummonerId": 17326057416,
+    "id": "1719363757532:1",
+    "isHistorical": true,
+    "timestamp": "2024-06-26T01:02:39.061Z",
+    "type": "groupchat"
+  }
+]

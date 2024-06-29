@@ -4,124 +4,7 @@ import 'package:lol_master_app/services/hero/hero_service.dart';
 import 'package:lol_master_app/services/rune/rune_service.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
-class PageInfo {
-  String puuid;
-
-  var pageIndex = 0;
-
-  // 用户点击的当前游戏id
-  int? currentGameId;
-
-  String? userName;
-
-  GameInfo? currentGameInfo;
-
-  List<HistoryInfo>? historyInfoList;
-
-  Map<String, GameInfo> gameInfoMap = {};
-
-  PageInfo({
-    required this.puuid,
-    this.pageIndex = 0,
-  });
-
-  String get pageIndexStr => (pageIndex + 1).toString();
-}
-
-// 需要heroId、gameId、游戏类型(11是排位)、游戏日期、胜利与否
-class HistoryInfo {
-  int? summonerId;
-  String? userName;
-  String? heroId;
-  String? heroIcon;
-  int? gameId;
-  int? mapId;
-
-  // 模式：排位、匹配、人机
-  String? gameType;
-  String? gameDate;
-  int? gameDuration;
-  bool? gameResult;
-
-  int? queueId;
-
-  HistoryInfo({
-    this.userName,
-    this.summonerId,
-    this.heroId,
-    this.heroIcon,
-    this.mapId,
-    this.gameId,
-    this.gameType,
-    this.gameDate,
-    this.gameDuration,
-    this.gameResult,
-    this.queueId,
-  });
-}
-
-class Player {
-  String? heroId;
-  String? heroIcon;
-  String? userName;
-  String? puuid;
-  String? kda;
-
-  // kda:k
-  int? kills;
-
-  // kda:d
-  int? deaths;
-
-  // kda:a
-  int? assists;
-
-  // 段位
-  String? rankLevel1;
-
-  // 小段位
-  String? rankLevel2;
-
-  //stats."perkPrimaryStyle": 8000,
-  //stats."perkSubStyle": 8100,
-  String? primaryRune;
-  String? secondaryRune;
-  String? primaryRuneIcon;
-  String? secondaryRuneIcon;
-
-  //"spell1Id": 11,
-  //       "spell2Id": 4,
-  String? spell1Id;
-  String? spell1Icon;
-
-  String? spell2Id;
-  String? spell2Icon;
-  String? item1;
-  String? item2;
-  String? item3;
-  String? item4;
-  String? item5;
-  String? item6;
-  String? item7;
-
-  String? item1Icon;
-  String? item2Icon;
-  String? item3Icon;
-  String? item4Icon;
-  String? item5Icon;
-  String? item6Icon;
-  String? item7Icon;
-
-  bool? win;
-}
-
-/// 游戏信息
-class GameInfo {
-  int? winTeam;
-  List<Player>? team1;
-  List<Player>? team2;
-  String? summonerName;
-}
+import '../../../entities/lol/game_info.dart';
 
 /// 1.查询战绩列表(待优化：召唤师名称显示)
 /// 2.查询战绩详情(待优化：战绩title显示)
@@ -345,8 +228,8 @@ class DeskMatchHistoryController extends MvcController {
         var rankInfo = await LolApi.instance.queryRankInfo(player.puuid);
         if (rankInfo != null) {
           player.rankLevel1 =
-              getRankLevel1Str(rankInfo["highestPreviousSeasonEndTier"]);
-          player.rankLevel2 = getRankLevel2Str(rankInfo);
+              getRankLevel1Str(rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["tier"]);
+          player.rankLevel2 = getRankLevel2Str(rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["division"]);
         }
         player.kills = item["stats"]["kills"];
         player.deaths = item["stats"]["deaths"];
@@ -387,14 +270,6 @@ class DeskMatchHistoryController extends MvcController {
     }
   }
 
-  String getRankLevel2Str(Map<dynamic, dynamic> rankInfo) {
-    var ret = rankInfo["highestPreviousSeasonEndDivision"];
-    if (ret == "NA") {
-      return "未定级";
-    }
-    return ret;
-  }
-
   Future<void> changeGameId(int? gameId) async {
     currentPage?.currentGameId = gameId;
     await getMatchDetail();
@@ -427,6 +302,13 @@ class DeskMatchHistoryController extends MvcController {
       default:
         return rankInfo;
     }
+  }
+
+  String getRankLevel2Str(String? level) {
+    if (level == null || level == "NA") {
+      return "未定级";
+    }
+    return level;
   }
 
   bool get canToPreviousPage {
