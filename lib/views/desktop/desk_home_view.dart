@@ -12,6 +12,7 @@ import 'account/lol_account_view.dart';
 import 'equip/desk_equip_config_list_view.dart';
 import 'game_info/desk_game_info_view.dart';
 import 'hero/desk_hero_list_view.dart';
+import 'statistic/desk_statistic_view.dart';
 
 class DeskHomeView extends MvcView<DeskHomeController> {
   const DeskHomeView({super.key, required super.controller});
@@ -85,11 +86,14 @@ class DeskHomeView extends MvcView<DeskHomeController> {
                           text: "对局信息",
                           height: 32,
                         ),
+                        Tab(
+                          text: "评分系统",
+                          height: 32,
+                        ),
                       ],
                       controller: controller.tabController,
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -113,6 +117,9 @@ class DeskHomeView extends MvcView<DeskHomeController> {
               ),
               DeskGameInfoView(
                 controller: controller.gameInfoController,
+              ),
+              DeskStatisticView(
+                controller: controller.statisticController,
               ),
             ],
           )),

@@ -19,7 +19,7 @@ class HeroSelectDropdown extends MvcView<HeroSelectController> {
     }
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xfff6dba6)),
+        border: Border.all(color: const Color(0xfff6dba6)),
       ),
       child: DropdownButtonHideUnderline(
         child: ButtonTheme(

@@ -23,6 +23,7 @@
 
 <img src="snapshot/main.png" width="640" />
 
+
 ## 路线图
 
 - (一)项目介绍，开发目标(简单)
@@ -37,3 +38,7 @@
 - (十)设计数据库、录入数据(普通)
 - (十一)开发用户数据同步接口(困难)
 - (十二)优化APP界面(困难)
+
+### 赞赏码
+<img src="snapshot/zanshangma1.png" />
+<img src="snapshot/zanshangma.png" width="640" />

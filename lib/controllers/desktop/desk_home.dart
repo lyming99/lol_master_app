@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/rune/desk_rune_list_controller.dart';
 import 'package:lol_master_app/controllers/desktop/spell/desk_spell_list_controller.dart';
+import 'package:lol_master_app/controllers/desktop/statistic/desk_statistic_controller.dart';
 import 'package:lol_master_app/controllers/desktop/summoner/match_history_controller.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/account/lol_account_view.dart';
@@ -30,10 +31,12 @@ class DeskHomeController extends MvcController {
 
   var gameInfoController = DeskGameInfoController();
 
+  var statisticController = DeskStatisticController();
+
   @override
   void onInitState(BuildContext context, MvcViewState state) {
     super.onInitState(context, state);
-    tabController = TabController(length: 5, vsync: state);
+    tabController = TabController(length: 6, vsync: state);
   }
 
   @override
@@ -48,5 +51,6 @@ class DeskHomeController extends MvcController {
     spellListController = oldController.spellListController;
     runeListController = oldController.runeListController;
     gameInfoController = oldController.gameInfoController;
+    statisticController = oldController.statisticController;
   }
 }
