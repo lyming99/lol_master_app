@@ -4,7 +4,6 @@ import 'package:lol_master_app/controllers/desktop/statistic/desk_statistic_cont
 import 'package:lol_master_app/util/mvc.dart';
 import 'widgets/filter_view.dart';
 import 'widgets/record_list_view.dart';
-import 'widgets/standard_statistic_graphx.dart';
 import 'widgets/statistic_view.dart';
 
 /// 评分系统界面开发

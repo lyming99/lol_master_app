@@ -42,3 +42,9 @@
 ### 赞赏码
 <img src="snapshot/zanshangma1.png" />
 <img src="snapshot/zanshangma.png" width="640" />
+
+### 赞赏列表
+
+| 昵称 | 赞赏日期 | 赞赏金额|留言|
+| --- | --- | --- | --- |
+|Diver | 2019-09-01|10元|祝项目大火|
