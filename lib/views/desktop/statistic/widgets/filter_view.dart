@@ -19,7 +19,7 @@ class FilterView extends StatelessWidget {
             width: 8,
           ),
           Container(
-            width: 180,
+            width: 200,
             height: 32,
             child: DateRangeField(
               decoration: const InputDecoration(
@@ -43,6 +43,7 @@ class FilterView extends StatelessWidget {
                   dynamic Function(DateRange?) onDateRangeChanged) {
                 return DateRangePickerWidget(
                   doubleMonth: true,
+                  height: 330,
                   initialDateRange: controller.selectedRange,
                   onDateRangeChanged: onDateRangeChanged,
                 );

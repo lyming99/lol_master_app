@@ -130,76 +130,7 @@ class StandardStatisticGraphx extends StatelessWidget {
                   return '20';
                 },
                 tipWindowSize: Size(60, 40))),
-        BrnPointData(
-            pointText: '67',
-            y: 67,
-            x: 4,
-            lineTouchData: BrnLineTouchData(onTouch: () {
-              return '66';
-            }, tipWindowSize: Size(60, 40))),
-        BrnPointData(
-            pointText: '10',
-            y: 10,
-            x: 5,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '10';
-                })),
-        BrnPointData(
-            pointText: '40',
-            y: 40,
-            x: 6,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '40';
-                })),
-        BrnPointData(
-            pointText: '100',
-            y: 60,
-            x: 7,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '100';
-                })),
-        BrnPointData(
-            pointText: '100',
-            y: 70,
-            x: 8,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '100';
-                })),
-        BrnPointData(
-            pointText: '100',
-            y: 90,
-            x: 9,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '100';
-                })),
-        BrnPointData(
-            pointText: '100',
-            y: 80,
-            x: 10,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '11';
-                })),
-        BrnPointData(
-            pointText: '100',
-            y: 100,
-            x: 11,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '100';
-                })),
+
       ],
       lineColor: Colors.blue,
     );
@@ -245,67 +176,6 @@ class StandardStatisticGraphx extends StatelessWidget {
                 tipWindowSize: Size(60, 40),
                 onTouch: () {
                   return '18';
-                })),
-        BrnPointData(
-            pointText: '13',
-            y: 40,
-            x: 5,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '13';
-                })),
-        BrnPointData(
-            pointText: '16',
-            y: 30,
-            x: 6,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '16';
-                })),
-        BrnPointData(
-            pointText: '49',
-            y: 49,
-            x: 7,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '49';
-                })),
-        BrnPointData(
-            pointText: '66',
-            y: 66,
-            x: 8,
-            lineTouchData: BrnLineTouchData(onTouch: () {
-              return '66';
-            }, tipWindowSize: Size(60, 40))),
-        BrnPointData(
-            pointText: '77',
-            y: 80,
-            x: 9,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '77';
-                })),
-        BrnPointData(
-            pointText: '88',
-            y: 90,
-            x: 10,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '88';
-                })),
-        BrnPointData(
-            pointText: '99',
-            y: 60,
-            x: 11,
-            lineTouchData: BrnLineTouchData(
-                tipWindowSize: Size(60, 40),
-                onTouch: () {
-                  return '99';
                 })),
       ],
       shaderColors: [
