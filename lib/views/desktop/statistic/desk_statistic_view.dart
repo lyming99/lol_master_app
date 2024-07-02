@@ -1,10 +1,9 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/statistic/desk_statistic_controller.dart';
 import 'package:lol_master_app/util/mvc.dart';
-import 'widgets/filter_view.dart';
-import 'widgets/record_list_view.dart';
-import 'widgets/statistic_view.dart';
+import 'statistic_widgets/filter_view.dart';
+import 'statistic_widgets/record_list_view.dart';
+import 'statistic_widgets/statistic_view.dart';
 
 /// 评分系统界面开发
 class DeskStatisticView extends MvcView<DeskStatisticController> {

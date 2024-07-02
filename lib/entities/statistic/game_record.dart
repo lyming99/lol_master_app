@@ -6,6 +6,8 @@ class GameRecord {
 
   String? puuid;
 
+  String? summonerId;
+
   /// lol官方接口游戏id
   String? gameId;
 
