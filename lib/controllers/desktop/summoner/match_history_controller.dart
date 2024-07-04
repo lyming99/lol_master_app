@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/hero/hero_service.dart';
 import 'package:lol_master_app/services/rune/rune_service.dart';
+import 'package:lol_master_app/services/statistic/statistic_standard_service.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
 import '../../../entities/lol/game_info.dart';
@@ -15,6 +16,11 @@ class DeskMatchHistoryController extends MvcController {
   int currentPageInfoIndex = 0;
   var loadingList = false;
   var loadingDetail = false;
+  String? gameId;
+
+  DeskMatchHistoryController({
+    this.gameId,
+  });
 
   @override
   void onInitState(BuildContext context, MvcViewState state) {
@@ -111,6 +117,9 @@ class DeskMatchHistoryController extends MvcController {
   Future<void> fetchData() async {
     await getMatchHistory();
     await getMatchDetail();
+    // 将数据记录到 gameRecord
+    var historyList = currentPage?.historyInfoList;
+    await StatisticStandardService.instance.recordGameInfo(historyList);
     notifyListeners();
   }
 
@@ -227,9 +236,10 @@ class DeskMatchHistoryController extends MvcController {
         });
         var rankInfo = await LolApi.instance.queryRankInfo(player.puuid);
         if (rankInfo != null) {
-          player.rankLevel1 =
-              getRankLevel1Str(rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["tier"]);
-          player.rankLevel2 = getRankLevel2Str(rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["division"]);
+          player.rankLevel1 = getRankLevel1Str(
+              rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["tier"]);
+          player.rankLevel2 = getRankLevel2Str(
+              rankInfo["queueMap"]?["RANKED_SOLO_5x5"]?["division"]);
         }
         player.kills = item["stats"]["kills"];
         player.deaths = item["stats"]["deaths"];

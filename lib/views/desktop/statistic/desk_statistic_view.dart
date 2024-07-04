@@ -26,11 +26,8 @@ class DeskStatisticView extends MvcView<DeskStatisticController> {
                 controller: controller,
               ),
               // 3.复盘数据列表
-              SizedBox(
-                height: 500,
-                child: DeskRecordListView(
-                  controller: controller.recordListController,
-                ),
+              DeskRecordListView(
+                controller: controller.recordListController,
               ),
             ],
           ),

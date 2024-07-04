@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lol_master_app/entities/lol/game_info.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/util/mvc.dart';
@@ -270,24 +268,6 @@ class DeskGameInfoView extends MvcView<DeskGameInfoController> {
           )
         ],
       ),
-    );
-  }
-}
-
-class HistoryInfoItemView extends StatelessWidget {
-  final List<HistoryInfo> historyInfoList;
-  final DeskGameInfoController controller;
-
-  const HistoryInfoItemView({
-    super.key,
-    required this.historyInfoList,
-    required this.controller,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [],
     );
   }
 }

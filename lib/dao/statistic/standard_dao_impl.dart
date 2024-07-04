@@ -1,3 +1,4 @@
+import 'package:lol_master_app/entities/statistic/game_record.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
 
 import 'standard_dao.dart';
@@ -35,22 +36,41 @@ class StandardDaoImpl extends StandardDao {
   }
 
   @override
-  Future<List<StatisticStandardRecord>> getStandardRecordList() async {
-    var items =
-        await database.rawQuery("select * from StatisticStandardRecord");
+  Future<List<StatisticStandardRecord>> getStandardRecordList(
+      String itemId) async {
+    var items = await database.rawQuery(
+        "select * from StatisticStandardRecord where standardItemId=?",
+        [itemId]);
     return items.map((e) => StatisticStandardRecord.fromJson(e)).toList();
   }
 
   @override
-  Future<int> updateStandardRecord(StatisticStandardRecord record) async {
-    return database.update(
-      "StatisticStandardRecord",
-      record.toJson(),
-      where: "id=?",
-      whereArgs: [
-        record.id,
-      ],
-    );
+  Future<List<StatisticStandardRecord>> getStandardRecordListByGameId(
+      String gameId) async {
+    var items = await database.rawQuery(
+        "select * from StatisticStandardRecord where gameId=?", [gameId]);
+    return items.map((e) => StatisticStandardRecord.fromJson(e)).toList();
+  }
+
+  @override
+  Future<int> upsertStandardRecord(StatisticStandardRecord record) async {
+    if (record.id != null) {
+      return database.update(
+        "StatisticStandardRecord",
+        record.toJson(),
+        where: "id=?",
+        whereArgs: [
+          record.id,
+        ],
+      );
+    } else {
+      var id = await database.insert(
+        "StatisticStandardRecord",
+        record.toJson(),
+      );
+      record.id = id;
+      return id;
+    }
   }
 
   @override
@@ -120,5 +140,33 @@ class StandardDaoImpl extends StandardDao {
         item.id,
       ],
     );
+  }
+
+  @override
+  Future<int> upsertGameRecord(GameRecord item) async {
+    var ret = await database
+        .query("GameRecord", where: "gameId=?", whereArgs: [item.gameId]);
+    if (ret.isNotEmpty) {
+      //更新数据
+      return database.update(
+        "GameRecord",
+        item.toJson(),
+        where: "gameId=?",
+        whereArgs: [
+          item.gameId,
+        ],
+      );
+    } else {
+      return database.insert(
+        "GameRecord",
+        item.toJson(),
+      );
+    }
+  }
+
+  @override
+  Future<List<GameRecord>> getGameRecordList() async {
+    var items = await database.rawQuery("select * from GameRecord");
+    return items.map((e) => GameRecord.fromJson(e)).toList();
   }
 }

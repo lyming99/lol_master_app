@@ -11,6 +11,8 @@ class LolConfig {
   int? primaryHero;
   int? secondaryHero;
   int? thirdHero;
+  int? currentStandardGroupId;
+  String ? currentPuuid;
 
   LolConfig({
     this.id,
@@ -21,6 +23,8 @@ class LolConfig {
     this.primaryHero,
     this.secondaryHero,
     this.thirdHero,
+    this.currentStandardGroupId,
+    this.currentPuuid,
   });
 
   factory LolConfig.fromJson(Map<String, dynamic> json) {
@@ -33,6 +37,8 @@ class LolConfig {
       primaryHero: json['primaryHero'],
       secondaryHero: json['secondaryHero'],
       thirdHero: json['thirdHero'],
+      currentStandardGroupId: json['currentGroupId'],
+      currentPuuid: json['currentPuuid'],
     );
   }
 
@@ -46,6 +52,8 @@ class LolConfig {
       'primaryHero': primaryHero,
       'secondaryHero': secondaryHero,
       'thirdHero': thirdHero,
+      'currentGroupId': currentStandardGroupId,
+      'currentPuuid': currentPuuid,
     };
   }
 }

@@ -15,42 +15,38 @@ class CorrelationStatisticGraphx extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var list = controller.failTopList;
     return BrnProgressBarChart(
       barChartStyle: BarChartStyle.vertical,
       xAxis: ChartAxis(axisItemList: [
-        AxisItem(showText: '示例1'),
-        AxisItem(showText: '示例2'),
-        AxisItem(showText: '示例3'),
+        for (var i = 0; i < list.length && i < 8; i++)
+          AxisItem(showText: list[i].itemName ?? ""),
       ]),
       barBundleList: [
-        BrnProgressBarBundle(barList: [
-          BrnProgressBarItem(text: '示例21', value: 20,),
-          BrnProgressBarItem(
-              text: '示例22', value: 15, selectedHintText: '示例12:20'),
-          BrnProgressBarItem(
-            text: '示例23',
-            value: 30,
-            selectedHintText:
-                '示例13:30\n示例13:30\n示例13:30\n示例13:30\n示例13:30\n示例13:30',
-          ),
-        ], colors: [
-          Color(0xff01D57D),
-          Color(0xff01D57D)
-        ]),
+        BrnProgressBarBundle(
+          barList: [
+            for (var i = 0; i < list.length && i < 8; i++)
+              BrnProgressBarItem(
+                text: list[i].getMaxValueName(false),
+                value: list[i].failRate * 100,
+                selectedHintText: list[i].getHintText(false),
+              ),
+          ],
+          colors: [
+            Color(0xff01D57D),
+            Color(0xff01D57D),
+          ],
+        ),
       ],
-      yAxis: ChartAxis(axisItemList: [
-        AxisItem(showText: '10'),
-        AxisItem(showText: '20'),
-        AxisItem(showText: '30')
-      ]),
-      singleBarWidth: 30,
-      barGroupSpace: 30,
-      barMaxValue: 60,
+      yAxis: ChartAxis(
+          axisItemList: [AxisItem(showText: '50'), AxisItem(showText: '100')]),
+      singleBarWidth: 10,
+      barGroupSpace: 50,
+      barMaxValue: 100,
       onBarItemClickInterceptor:
           (barBundleIndex, barBundle, barGroupIndex, barItem) {
         return true;
       },
-
     );
   }
 }

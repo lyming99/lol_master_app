@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:lol_master_app/entities/hero/hero_info.dart';
+import 'package:lol_master_app/services/hero/hero_service.dart';
+
 /// 1.查询游戏记录数据
 /// 2.对局结束触发查询
 /// 3.登录触发查询
@@ -15,7 +20,7 @@ class GameRecord {
   String? gameType;
 
   /// 游戏开始时间：时间戳(秒)
-  int? gameTime;
+  String? gameTime;
 
   /// 游戏时长：秒
   int? gameDuration;
@@ -50,12 +55,6 @@ class GameRecord {
   /// 补刀数量
   int? creepScore;
 
-  /// 装备列表
-  String? items;
-
-  /// 上单、中单、下路、打野、辅助
-  String? position;
-
   /// 召唤师技能1
   String? spell1;
 
@@ -67,6 +66,9 @@ class GameRecord {
 
   /// 符文2
   String? secondaryRune;
+
+  /// 游戏json数据
+  String? content;
 
   GameRecord({
     this.gameId,
@@ -83,12 +85,12 @@ class GameRecord {
     this.rankLevel1,
     this.rankLevel2,
     this.creepScore,
-    this.items,
-    this.position,
     this.spell1,
     this.spell2,
     this.primaryRune,
     this.secondaryRune,
+    this.content,
+    this.puuid,
   });
 
   factory GameRecord.fromJson(Map<String, dynamic> json) {
@@ -108,12 +110,55 @@ class GameRecord {
       rankLevel1: json['rankLevel1'],
       rankLevel2: json['rankLevel2'],
       creepScore: json['creepScore'],
-      items: json['items'],
-      position: json['position'],
       spell1: json['spell1'],
       spell2: json['spell2'],
       primaryRune: json['primaryRune'],
       secondaryRune: json['secondaryRune'],
+      content: json['content'],
+      puuid: json['puuid'],
     );
+  }
+
+  double get outputPercent => 0.2;
+
+  int get towerKill => 0;
+
+  int get assistKill => 0;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'gameId': gameId,
+      'gameType': gameType,
+      'gameTime': gameTime,
+      'gameDuration': gameDuration,
+      'totalDamageDealtToChampions': totalDamageDealtToChampions,
+      'totalDamageDealtToChampionsPercent': totalDamageDealtToChampionsPercent,
+      'totalDamageTaken': totalDamageTaken,
+      'totalDamageTakenPercent': totalDamageTakenPercent,
+      'kills': kills,
+      'deaths': deaths,
+      'assists': assists,
+      'rankLevel1': rankLevel1,
+      'rankLevel2': rankLevel2,
+      'creepScore': creepScore,
+      'spell1': spell1,
+      'spell2': spell2,
+      'primaryRune': primaryRune,
+      'secondaryRune': secondaryRune,
+      'puuid': puuid,
+      'summonerId': summonerId,
+      'content': content,
+    };
+  }
+
+  Future<HeroInfo?> getHeroInfo() async {
+    var json = jsonDecode(content ?? "{}");
+    var heroId = json["heroId"];
+    return await HeroService.instance.getHeroInfo(heroId?.toString());
+  }
+
+  Future<bool> isWin() async {
+    var json = jsonDecode(content ?? "{}");
+    return json['win']==true;
   }
 }

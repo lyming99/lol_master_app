@@ -70,7 +70,7 @@ class StatisticStandardItem {
   /// 评分名称
   String? name;
 
-  /// 评分类型：整数型、选项型、布尔型
+  /// 评分类型：1.整数型、2.选项型、3.布尔型
   String? type;
 
   /// 选项型列表
@@ -122,6 +122,8 @@ class StatisticStandardItem {
       'updateTime': updateTime,
     };
   }
+
+  int get itemType => type == null ? 2 : int.parse(type ?? "2");
 }
 
 /// 评分记录

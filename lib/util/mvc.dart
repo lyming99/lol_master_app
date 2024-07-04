@@ -84,7 +84,20 @@ class MvcController with ChangeNotifier {
   void onDispose() {}
 
   static T of<T extends MvcController>(BuildContext context) {
-    return context.findAncestorStateOfType<MvcViewState>()!.widget.controller
-        as T;
+    // StatefulElement
+    T? ret;
+    context.visitAncestorElements((element) {
+      if (element is StatefulElement) {
+        var state = element.state;
+        if (state is MvcViewState) {
+          if (state.widget.controller is T) {
+            ret = state.widget.controller as T;
+            return false;
+          }
+        }
+      }
+      return true;
+    });
+    return ret!;
   }
 }

@@ -86,4 +86,14 @@ class HeroInfo {
         "combos": combos?.map((x) => x.toJson()).toList(),
         "searchKey": searchKey,
       };
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HeroInfo &&
+          runtimeType == other.runtimeType &&
+          name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }

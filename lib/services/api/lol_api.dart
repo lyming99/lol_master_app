@@ -85,4 +85,8 @@ abstract class LolApi with ChangeNotifier {
   Future<dynamic> queryGameSession();
 
   Future<dynamic> querySummonerInfoByPuuid(String puuid);
+
+  String? getRankLevel1Str(String? level1) ;
+
+  String getRankLevel2Str(String? level2);
 }

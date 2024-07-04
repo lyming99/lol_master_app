@@ -13,14 +13,14 @@ class DeskMatchHistoryView extends MvcView<DeskMatchHistoryController> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
-          padding: EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: Row(
             children: [
               Container(
                 width: 300,
                 constraints: const BoxConstraints(maxHeight: 36),
-                margin: EdgeInsets.only(left: 4),
+                margin: const EdgeInsets.only(left: 4),
                 child: TextField(
                   // controller: controller.searchController,
                   decoration: const InputDecoration(

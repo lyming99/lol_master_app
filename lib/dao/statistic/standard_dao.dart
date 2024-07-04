@@ -1,4 +1,5 @@
 import 'package:lol_master_app/dao/base_dao.dart';
+import 'package:lol_master_app/entities/statistic/game_record.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
 
 import '../db_factory.dart';
@@ -18,9 +19,12 @@ abstract class StandardDao extends BaseDao {
 
   Future<List<StatisticStandardItem>> getStandardItemList(int? groupId);
 
-  Future<List<StatisticStandardRecord>> getStandardRecordList();
+  Future<List<StatisticStandardRecord>> getStandardRecordList(String itemId);
 
-  Future<int> updateStandardRecord(StatisticStandardRecord record);
+  Future<List<StatisticStandardRecord>> getStandardRecordListByGameId(
+      String gameId);
+
+  Future<int> upsertStandardRecord(StatisticStandardRecord record);
 
   Future<int> deleteStandardGroup(int? groupId);
 
@@ -33,4 +37,8 @@ abstract class StandardDao extends BaseDao {
   Future<int> updateStandardItem(StatisticStandardItem item);
 
   Future<int> addStandardItem(StatisticStandardItem item);
+
+  Future<int> upsertGameRecord(GameRecord item);
+
+  Future<List<GameRecord>> getGameRecordList();
 }

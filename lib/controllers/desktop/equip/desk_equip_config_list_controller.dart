@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/entities/equip/equip_config.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
+import 'package:lol_master_app/services/equip/equip_service.dart';
 import 'package:lol_master_app/services/equip/equip_service_impl.dart';
 import 'package:lol_master_app/util/mvc.dart';
 
@@ -28,8 +29,7 @@ class DeskEquipConfigListController extends MvcController {
   }
 
   Future<void> applyToLolClient(EquipConfig config) async {
-    var data = await LolApi.instance.putEquipConfig(config);
-    print('$data');
+    await LolApi.instance.putEquipConfig(config);
   }
 
   Future<void> search(String value) async {

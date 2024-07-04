@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
+import 'package:lol_master_app/services/config/lol_config_service.dart';
 import 'package:lol_master_app/services/statistic/statistic_standard_service.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/widgets/circle_button.dart';
@@ -100,6 +101,13 @@ class DeskStandardManagerController extends MvcController {
     }
     selectGroupIndex =
         groupList.indexWhere((element) => element.selected == true);
+    if (selectGroupIndex == -1) {
+      selectGroupIndex = 0;
+    }
+    var config = await LolConfigService.instance.getCurrentConfig();
+    var currentGroupId = config?.currentStandardGroupId;
+    selectGroupIndex =
+        groupList.indexWhere((element) => element.id == currentGroupId);
     if (selectGroupIndex == -1) {
       selectGroupIndex = 0;
     }

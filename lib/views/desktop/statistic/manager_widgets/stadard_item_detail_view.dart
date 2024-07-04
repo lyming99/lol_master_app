@@ -14,8 +14,7 @@ class StandardItemDetailController extends MvcController {
 
   int get itemsCount => items.length;
 
-  int? get itemType =>
-      standardItem?.type == null ? 1 : int.parse(standardItem?.type ?? "1");
+  int? get itemType => standardItem?.itemType ?? 2;
 
   String get titleName => standardItem?.name ?? "";
 
@@ -94,7 +93,6 @@ class StandardItemDetailController extends MvcController {
     notifyListeners();
     saveItems();
   }
-
 
   void saveItems() {
     standardItem?.items = jsonEncode(items);

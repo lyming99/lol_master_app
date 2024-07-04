@@ -7,13 +7,13 @@ import 'standard_statistic_graphx.dart';
 class StatisticView extends StatelessWidget {
   final DeskStatisticController controller;
 
-  const StatisticView({required this.controller});
+  const StatisticView({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: Row(
         children: [
           Expanded(

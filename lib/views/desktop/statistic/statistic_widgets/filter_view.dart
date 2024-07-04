@@ -4,6 +4,7 @@ import 'package:lol_master_app/controllers/desktop/statistic/desk_statistic_cont
 import 'package:lol_master_app/views/desktop/statistic/desk_standard_manager_view.dart';
 import 'package:lol_master_app/views/desktop/summoner/horizontal_button_widget.dart';
 import 'package:lol_master_app/widgets/circle_button.dart';
+import 'package:lol_master_app/widgets/popup_dialog.dart';
 import 'package:lol_master_app/widgets/popup_window.dart';
 
 class FilterView extends StatelessWidget {
@@ -97,7 +98,7 @@ class FilterView extends StatelessWidget {
               showManagerDialog(context);
             },
             icon: const Icon(Icons.settings_sharp),
-            text: "评分标准管理",
+            text: "标准管理",
           ),
         ],
       ),
@@ -105,58 +106,11 @@ class FilterView extends StatelessWidget {
   }
 
   void showManagerDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return Container(
-          margin:
-              const EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 30),
-          child: Stack(
-            children: [
-              Container(
-                margin: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: const Color(0xff091b20),
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: const Color(0xffe8be72)),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: DeskStandardManagerView(
-                  controller: DeskStandardManagerController(),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff091b20),
-                        borderRadius: BorderRadius.circular(80),
-                        border: Border.all(color: const Color(0xffe8be72)),
-                      ),
-                      child: const Icon(
-                        Icons.close,
-                        color: Color(0xffe8be72),
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    ).then((value) => controller.fetchData());
+    showMyCustomDialog(context: context, builder: (context){
+      return DeskStandardManagerView(
+        controller: DeskStandardManagerController(),
+      );
+    }).then((value) => controller.fetchData());
   }
 
   void showStandardItemListViewPopup(BuildContext context) {

@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
@@ -608,8 +606,9 @@ class LolApiImpl extends LolApi {
     return null;
   }
 
-  String? getRankLevel1Str(String? rankInfo) {
-    switch (rankInfo) {
+  @override
+  String? getRankLevel1Str(String? level1) {
+    switch (level1) {
       case "IRON":
         return "黑铁";
       case "BRONZE":
@@ -633,15 +632,16 @@ class LolApiImpl extends LolApi {
       case "NA":
         return "未定级";
       default:
-        return rankInfo;
+        return level1;
     }
   }
 
-  String getRankLevel2Str(String? level) {
-    if (level == null || level == "NA") {
+  @override
+  String getRankLevel2Str(String? level2) {
+    if (level2 == null || level2 == "NA") {
       return "未定级";
     }
-    return level;
+    return level2;
   }
 
   Future<void> getRoomInfo(bool isInGameProgress) async {
