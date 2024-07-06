@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lol_master_app/controllers/desktop/statistic/desk_record_list_controller.dart';
 import 'package:lol_master_app/entities/hero/hero_info.dart';
 import 'package:lol_master_app/util/mvc.dart';
-import 'package:lol_master_app/views/desktop/game_info/desk_game_info_view.dart';
 import 'package:lol_master_app/widgets/circle_button.dart';
 import 'package:lol_master_app/widgets/popup_dialog.dart';
 import 'package:lol_master_app/widgets/popup_window.dart';
@@ -106,6 +105,9 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
     if (header.columnType == ColumnType.detail.name) {
       return buildDetailLinkWidget(context, cell);
     }
+    if (header.columnType == ColumnType.gameResult.name) {
+      return buildGameResultWidget(context, cell);
+    }
     return buildNormalWidget(context, cell);
   }
 
@@ -113,6 +115,19 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
     return SizedBox(
       width: getCellWidth(cell),
       child: Center(child: Text(cell.value.toString())),
+    );
+  }
+
+  SizedBox buildGameResultWidget(BuildContext context, MyCellItem cell) {
+    return SizedBox(
+      width: getCellWidth(cell),
+      child: Center(
+          child: Text(
+        cell.value.toString(),
+        style: TextStyle(
+          color: cell.value.toString() == "胜利" ? Colors.green : Colors.red,
+        ),
+      )),
     );
   }
 
@@ -247,7 +262,7 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
           hintText: "搜索英雄",
           controller: controller.filterControllerMap["hero"]!,
           onChanged: () {
-            controller.refreshFilter();
+            controller.refreshTable();
           },
           itemBuilder: (context, value) {
             var heroInfo = value as HeroInfo;
@@ -284,7 +299,7 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
           hintText: "搜索段位",
           controller: controller.filterControllerMap["rankLevel"]!,
           onChanged: () {
-            controller.refreshFilter();
+            controller.refreshTable();
           },
           itemBuilder: (context, value) {
             return Text(
@@ -309,7 +324,7 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
           ),
         );
       },
-    ).then((value) => controller.fetchData());
+    ).then((value) => controller.refreshTable());
   }
 
   void showRemarkDialog(BuildContext context, MyCellItem cell) {

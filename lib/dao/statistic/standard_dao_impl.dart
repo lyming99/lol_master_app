@@ -147,15 +147,18 @@ class StandardDaoImpl extends StandardDao {
     var ret = await database
         .query("GameRecord", where: "gameId=?", whereArgs: [item.gameId]);
     if (ret.isNotEmpty) {
-      //更新数据
-      return database.update(
-        "GameRecord",
-        item.toJson(),
-        where: "gameId=?",
-        whereArgs: [
-          item.gameId,
-        ],
-      );
+      //更新数据时无需更新段位，或者直接不更新
+      return 0;
+      // return database.update(
+      //   "GameRecord",
+      //   item.toJson()
+      //     ..remove("rankLevel1")
+      //     ..remove("rankLevel2"),
+      //   where: "gameId=?",
+      //   whereArgs: [
+      //     item.gameId,
+      //   ],
+      // );
     } else {
       return database.insert(
         "GameRecord",

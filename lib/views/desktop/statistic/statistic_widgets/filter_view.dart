@@ -41,17 +41,10 @@ class FilterView extends StatelessWidget {
               onDateRangeSelected: (DateRange? value) {
                 // Handle the selected date range here
                 controller.updateSelectDateRange(value);
+                // controller.recordListController.updateStatistic(context);
               },
-              selectedDateRange: controller.selectedRange,
-              pickerBuilder: (BuildContext context,
-                  dynamic Function(DateRange?) onDateRangeChanged) {
-                return DateRangePickerWidget(
-                  doubleMonth: true,
-                  height: 330,
-                  initialDateRange: controller.selectedRange,
-                  onDateRangeChanged: onDateRangeChanged,
-                );
-              },
+              selectedDateRange: controller.filterParams.selectedDateRange,
+              pickerBuilder: datePickerBuilder,
             ),
           ),
           SizedBox(
@@ -106,11 +99,13 @@ class FilterView extends StatelessWidget {
   }
 
   void showManagerDialog(BuildContext context) {
-    showMyCustomDialog(context: context, builder: (context){
-      return DeskStandardManagerView(
-        controller: DeskStandardManagerController(),
-      );
-    }).then((value) => controller.fetchData());
+    showMyCustomDialog(
+        context: context,
+        builder: (context) {
+          return DeskStandardManagerView(
+            controller: DeskStandardManagerController(),
+          );
+        }).then((value) => controller.fetchData());
   }
 
   void showStandardItemListViewPopup(BuildContext context) {
@@ -149,7 +144,58 @@ class FilterView extends StatelessWidget {
           );
         },
       ).then((value) =>
-      controller.listPopupTime = DateTime.now().millisecondsSinceEpoch);
+          controller.listPopupTime = DateTime.now().millisecondsSinceEpoch);
     }
   }
+
+  Widget datePickerBuilder(
+          BuildContext context, dynamic Function(DateRange?) onDateRangeChanged,
+          [bool doubleMonth = true]) =>
+      DateRangePickerWidget(
+        doubleMonth: doubleMonth,
+        quickDateRanges: [
+          QuickDateRange(dateRange: null, label: "清除快速选择"),
+          QuickDateRange(
+            label: '最近3天',
+            dateRange: DateRange(
+              DateTime.now().subtract(const Duration(days: 3)),
+              DateTime.now(),
+            ),
+          ),
+          QuickDateRange(
+            label: '最近7天',
+            dateRange: DateRange(
+              DateTime.now().subtract(const Duration(days: 7)),
+              DateTime.now(),
+            ),
+          ),
+          QuickDateRange(
+            label: '最近30天',
+            dateRange: DateRange(
+              DateTime.now().subtract(const Duration(days: 30)),
+              DateTime.now(),
+            ),
+          ),
+        ],
+        initialDateRange: controller.filterParams.selectedDateRange,
+        initialDisplayedDate:
+        controller.filterParams.selectedDateRange?.start ?? DateTime(2023, 11, 20),
+        onDateRangeChanged: onDateRangeChanged,
+        height: 310,
+        theme: const CalendarTheme(
+          selectedColor: Color(0xffb67100),
+          inRangeColor: Color(0xffb67100),
+          dayNameTextStyle: TextStyle(color: Colors.white, fontSize: 10),
+          inRangeTextStyle: TextStyle(color: Color(0xfff6f6f6)),
+          selectedTextStyle: TextStyle(color: Color(0xfff6f6f6)),
+          todayTextStyle: TextStyle(fontWeight: FontWeight.bold),
+          defaultTextStyle: TextStyle(color: Colors.white, fontSize: 12),
+          radius: 0,
+          tileSize: 36,
+          disabledTextStyle: TextStyle(color: Colors.grey),
+          monthTextStyle: TextStyle(color: Color(0xffe8be72)),
+          quickDateRangeTextStyle: TextStyle(color: Color(0xffe8be72)),
+          selectedQuickDateRangeColor: Color(0xffe8be72),
+        ),
+      );
 }

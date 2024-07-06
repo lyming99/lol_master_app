@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lol_master_app/controllers/desktop/statistic/desk_statistic_controller.dart';
 import 'package:lol_master_app/entities/hero/hero_info.dart';
 import 'package:lol_master_app/entities/statistic/game_record.dart';
@@ -24,7 +23,8 @@ enum ColumnType {
   kda,
   score,
   remark,
-  detail;
+  detail,
+  gameResult;
 
   static ColumnType fromName(String name) {
     return ColumnType.values.where((element) => element.name == name).first;
@@ -44,12 +44,20 @@ final gameHeaders = <MyHeaderItem>[
     preferWidth: 100,
     columnType: ColumnType.text.name,
   ),
+  // items: HeroInfo?
   MyHeaderItem(
     key: "hero",
     name: "使用英雄",
     preferWidth: 110,
     columnType: ColumnType.hero.name,
   ),
+  MyHeaderItem(
+    key: "gameResult",
+    name: "结果",
+    preferWidth: 110,
+    columnType: ColumnType.gameResult.name,
+  ),
+  // items: String=>rankLevel1+rankLevel2
   MyHeaderItem(
     key: "rankLevel",
     name: "段位",
@@ -104,6 +112,14 @@ class DeskRecordListController extends MvcController {
 
   // 当前评分标准: 如果为空，则渲染游戏数据
   StatisticStandardGroup? group;
+  DeskStatisticController? statisticController;
+
+  @override
+  void onInitState(BuildContext context, MvcViewState state) {
+    super.onInitState(context, state);
+    statisticController = MvcController.of<DeskStatisticController>(context);
+    fetchData();
+  }
 
   Future<void> fetchData() async {
     records = await StatisticStandardService.instance.getGameRecordList();
@@ -116,6 +132,18 @@ class DeskRecordListController extends MvcController {
   ///   输出占比，承伤占比，推塔数量，补刀数量，备注
   /// 2.将record转换为内容数据rows
   Future<void> fetchGameData() async {
+    var records = this.records;
+    var dateRange = statisticController?.filterParams.selectedDateRange;
+    if (dateRange != null) {
+      records = records.where((element) {
+        var gameTime = element.gameTime;
+        if (gameTime != null && gameTime.length == "yyyy-MM-dd".length) {
+          var date = DateFormat("yyyy-MM-dd").parse(gameTime);
+          return date.isBefore(dateRange.end) && date.isAfter(dateRange.start);
+        }
+        return false;
+      }).toList();
+    }
     var headers = gameHeaders
         .map((e) => e.copyWith(
               filters: [],
@@ -137,6 +165,10 @@ class DeskRecordListController extends MvcController {
         MyCellItem(value: record.gameTime, rowIndex: i, colIndex: colIndex++),
         MyCellItem(
             value: await record.getHeroInfo(),
+            rowIndex: i,
+            colIndex: colIndex++),
+        MyCellItem(
+            value: (await record.isWin()) ? "胜利" : "失败",
             rowIndex: i,
             colIndex: colIndex++),
         MyCellItem(
@@ -222,13 +254,20 @@ class DeskRecordListController extends MvcController {
     rankLevelFilterController.filterItems = headerItem.filters;
   }
 
-  @override
-  void onInitState(BuildContext context, MvcViewState state) {
-    super.onInitState(context, state);
-    fetchData();
-  }
-
-  Future<void> refreshFilter() async {
+  // 列表数据改变要通知统计图更新
+  Future<void> refreshTable() async {
+    // 将筛选条件保存到统计图控制器
+    var filterParams = statisticController?.filterParams;
+    var selectRankLevel = filterControllerMap["rankLevel"]!.selectItems;
+    var selectedHero = filterControllerMap["hero"]!.selectItems;
+    filterParams?.rankLevelList = selectRankLevel.isEmpty
+        ? []
+        : selectRankLevel.map((e) => e?.toString() ?? "").toList();
+    filterParams?.heroList = selectedHero.isEmpty
+        ? []
+        : selectedHero.map((e) => e.name?.toString() ?? "").toList();
+    // 更新统计数据
+    statisticController?.calcStatisticGraphx();
     await fetchData();
   }
 

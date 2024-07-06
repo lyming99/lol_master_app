@@ -10,6 +10,7 @@ import 'package:lol_master_app/entities/rune/rune.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/config/lol_config_service.dart';
 import 'package:lol_master_app/services/rune/rune_service.dart';
+import 'package:lol_master_app/util/date_utils.dart';
 import 'package:process_run/process_run.dart';
 
 import '../hero/hero_service.dart';
@@ -512,7 +513,7 @@ class LolApiImpl extends LolApi {
       var gameType = item["gameType"];
       var mapId = item["mapId"];
       // 2024-06-20T12:57:56.218Z
-      var gameDate = item["gameCreationDate"];
+      var gameDate = MyDateUtils.formatUtcDateToDate(item["gameCreationDate"]);
       var gameDuration = item["gameDuration"];
       var gameResult = item["participants"].first["stats"]["win"];
       var queueId = item["queueId"];
@@ -524,7 +525,7 @@ class LolApiImpl extends LolApi {
         gameId: gameId,
         gameType: gameType,
         mapId: mapId,
-        gameDate: gameDate?.toString().substring(5, 10),
+        gameDate: gameDate,
         gameDuration: gameDuration,
         gameResult: gameResult,
         queueId: queueId,

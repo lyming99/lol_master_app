@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lol_master_app/services/api/lol_api.dart';
 import 'package:lol_master_app/services/hero/hero_service.dart';
 import 'package:lol_master_app/services/rune/rune_service.dart';
 import 'package:lol_master_app/services/statistic/statistic_standard_service.dart';
+import 'package:lol_master_app/util/date_utils.dart';
 import 'package:lol_master_app/util/mvc.dart';
-
 import '../../../entities/lol/game_info.dart';
 
 /// 1.查询战绩列表(待优化：召唤师名称显示)
@@ -171,7 +172,8 @@ class DeskMatchHistoryController extends MvcController {
         var gameType = item["gameType"];
         var mapId = item["mapId"];
         // 2024-06-20T12:57:56.218Z
-        var gameDate = item["gameCreationDate"];
+        var gameDate =
+            MyDateUtils.formatUtcDateToDate(item["gameCreationDate"]);
         var gameDuration = item["gameDuration"];
         var gameResult = item["participants"].first["stats"]["win"];
         var queueId = item["queueId"];
@@ -183,7 +185,7 @@ class DeskMatchHistoryController extends MvcController {
           gameId: gameId,
           gameType: gameType,
           mapId: mapId,
-          gameDate: gameDate?.toString().substring(5, 10),
+          gameDate: gameDate,
           gameDuration: gameDuration,
           gameResult: gameResult,
           queueId: queueId,

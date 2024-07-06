@@ -22,7 +22,11 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   sqflite: ^2.3.3+1
   sqflite_common_ffi: ^2.3.3
-  flutter_date_range_picker: ^0.1.1
+  flutter_date_range_picker:
+    path: D:/GitHub/date_range_picker
+  syncfusion_flutter_charts: ^26.1.40
+  fl_chart: ^0.68.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

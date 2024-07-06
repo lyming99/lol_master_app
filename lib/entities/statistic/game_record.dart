@@ -70,6 +70,8 @@ class GameRecord {
   /// 游戏json数据
   String? content;
 
+  HeroInfo? heroInfo;
+
   GameRecord({
     this.gameId,
     this.gameType,
@@ -152,13 +154,17 @@ class GameRecord {
   }
 
   Future<HeroInfo?> getHeroInfo() async {
-    var json = jsonDecode(content ?? "{}");
-    var heroId = json["heroId"];
-    return await HeroService.instance.getHeroInfo(heroId?.toString());
+    if (heroInfo == null) {
+      var json = jsonDecode(content ?? "{}");
+      var heroId = json["heroId"];
+      return heroInfo =
+          await HeroService.instance.getHeroInfo(heroId?.toString());
+    }
+    return heroInfo;
   }
 
   Future<bool> isWin() async {
     var json = jsonDecode(content ?? "{}");
-    return json['win']==true;
+    return json['win'] == true;
   }
 }

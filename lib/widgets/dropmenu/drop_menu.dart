@@ -17,6 +17,8 @@ class MyDropDownMenuController<T> extends MvcController {
     this.selectItem,
   });
 
+  int get selectIndex => selectItem == null ? 0 : items.indexOf(selectItem!);
+
   void updateSelectItem(int index) {
     selectItem = items[index];
     notifyListeners();
@@ -59,7 +61,7 @@ class MyDropDownMenu<T> extends MvcView<MyDropDownMenuController<T>> {
               SizedBox(
                 width: 10,
               ),
-              Expanded(child: Text("${controller.selectItem??""}")),
+              Expanded(child: Text("${controller.selectItem ?? ""}")),
               Icon(
                 Icons.arrow_drop_down,
                 size: 24,

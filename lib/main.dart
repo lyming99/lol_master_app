@@ -15,10 +15,10 @@ void main() async {
   await MyDbFactory.instance.init();
   await windowManager.waitUntilReadyToShow(
       const WindowOptions(
-        size: Size(960, 640),
+        size: Size(960, 540),
         center: true,
         skipTaskbar: false,
-        minimumSize: Size(720, 480),
+        minimumSize: Size(800, 540),
         title: "LOL大师助手",
         backgroundColor: Colors.transparent,
       ), () async {
