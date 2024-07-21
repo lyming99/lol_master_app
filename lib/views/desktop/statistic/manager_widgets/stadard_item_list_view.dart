@@ -85,6 +85,7 @@ class StandardItemListController extends MvcController {
   void setGroup(StatisticStandardGroup? group) {
     // 查询分组下的item列表
     this.group = group;
+
     updateSelectIndex(0);
     notifyListeners();
   }

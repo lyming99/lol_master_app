@@ -183,4 +183,14 @@ class StatisticStandardServiceImpl extends StatisticStandardService {
     }
     return resp.where((element) => element.puuid == puuid).toList();
   }
+
+  @override
+  Future<String?> getGameNote(String? gameId) {
+    return StandardDao.instance.getGameNote(gameId);
+  }
+
+  @override
+  Future<int?> setGameNote(String? gameId, String? gameNote) {
+    return StandardDao.instance.setGameNote(gameId, gameNote);
+  }
 }

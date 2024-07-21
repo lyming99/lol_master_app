@@ -7,6 +7,7 @@ import 'package:lol_master_app/widgets/popup_dialog.dart';
 import 'package:lol_master_app/widgets/popup_window.dart';
 import 'package:lol_master_app/widgets/table/table_filter_widget.dart';
 import 'package:lol_master_app/widgets/table/table_widget.dart';
+import 'package:re_editor/re_editor.dart';
 
 import 'score_popup_window.dart';
 
@@ -153,7 +154,6 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
           SizedBox(
             width: 10,
           ),
-          Expanded(child: Text("备注内容")),
           CircleButton(
             onTap: () {
               showRemarkDialog(context, cell);
@@ -168,6 +168,13 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
               ),
             ),
           ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+              child: Text(cell.value == null || cell.value.isEmpty
+                  ? "未备注"
+                  : cell.value)),
           SizedBox(
             width: 10,
           ),
@@ -330,8 +337,67 @@ class DeskRecordListView extends MvcView<DeskRecordListController> {
   void showRemarkDialog(BuildContext context, MyCellItem cell) {
     showMyCustomDialog(
         context: context,
+        windowSize: const Size(400, 320),
         builder: (context) {
-          return Container();
+          var codeController =
+              CodeLineEditingController.fromText(cell.value?.toString() ?? "");
+          return Material(
+            color: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: CodeEditor(
+                      controller: codeController,
+                      hint: "请输入备注内容",
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      Container(
+                        width: 80,
+                        height: 32,
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 4,
+                          horizontal: 8,
+                        ),
+                        child: CircleButton(
+                          radius: 4,
+                          onTap: () {
+                            codeController.text = "";
+                          },
+                          child: const Center(child: Text("清空")),
+                        ),
+                      ),
+                      Container(
+                        width: 80,
+                        height: 32,
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 4,
+                          horizontal: 8,
+                        ),
+                        child: CircleButton(
+                          radius: 4,
+                          onTap: () {
+                            controller.updateGameNote(
+                                cell.rowIndex, codeController.text);
+                            Navigator.pop(context);
+                          },
+                          child: const Center(child: Text("保存")),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
         });
   }
 

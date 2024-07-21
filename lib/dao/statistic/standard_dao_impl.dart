@@ -124,10 +124,11 @@ class StandardDaoImpl extends StandardDao {
 
   @override
   Future<int> addStandardItem(StatisticStandardItem item) async {
-    return database.insert(
+    var id = await database.insert(
       "StatisticStandardItem",
       item.toJson(),
     );
+    return id;
   }
 
   @override
@@ -148,17 +149,17 @@ class StandardDaoImpl extends StandardDao {
         .query("GameRecord", where: "gameId=?", whereArgs: [item.gameId]);
     if (ret.isNotEmpty) {
       //更新数据时无需更新段位，或者直接不更新
-      return 0;
-      // return database.update(
-      //   "GameRecord",
-      //   item.toJson()
-      //     ..remove("rankLevel1")
-      //     ..remove("rankLevel2"),
-      //   where: "gameId=?",
-      //   whereArgs: [
-      //     item.gameId,
-      //   ],
-      // );
+      // return 0;
+      return database.update(
+        "GameRecord",
+        item.toJson()
+          ..remove("rankLevel1")
+          ..remove("rankLevel2"),
+        where: "gameId=?",
+        whereArgs: [
+          item.gameId,
+        ],
+      );
     } else {
       return database.insert(
         "GameRecord",
@@ -170,6 +171,39 @@ class StandardDaoImpl extends StandardDao {
   @override
   Future<List<GameRecord>> getGameRecordList() async {
     var items = await database.rawQuery("select * from GameRecord");
-    return items.map((e) => GameRecord.fromJson(e)).toList();
+    var result = items.map((e) => GameRecord.fromJson(e)).toList();
+    return result;
+  }
+
+  @override
+  Future<String?> getGameNote(String? gameId) async {
+    var ret = await database
+        .query("GameRecordNote", where: "gameId=?", whereArgs: [gameId]);
+    if (ret.isEmpty) {
+      return null;
+    }
+    return ret.first["content"]?.toString();
+  }
+
+  @override
+  Future<int?> setGameNote(String? gameId, String? gameNote) async {
+    var ret = await database
+        .query("GameRecordNote", where: "gameId=?", whereArgs: [gameId]);
+    if (ret.isNotEmpty) {
+      // 更新
+      return database.update(
+        "GameRecordNote",
+        {"content": gameNote},
+        where: "gameId=?",
+        whereArgs: [
+          gameId,
+        ],
+      );
+    } else {
+      return database.insert(
+        "GameRecordNote",
+        {"gameId": gameId, "content": gameNote},
+      );
+    }
   }
 }

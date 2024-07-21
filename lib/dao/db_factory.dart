@@ -17,7 +17,7 @@ class MyDbFactory {
     String path = '$databasesPath/lol.db';
     _database = await openDatabase(
       path,
-      version: 12,
+      version: 16,
       onCreate: (Database db, int version) async {
         await createRuneTable(db);
         await createEquipTable(db);
@@ -26,6 +26,7 @@ class MyDbFactory {
         await createStatisticStandardItem(db);
         await createStatisticStandardRecord(db);
         await createGameRecord(db);
+        await createGameRecordNote(db);
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         await createRuneTable(db);
@@ -34,8 +35,8 @@ class MyDbFactory {
         await createStatisticStandardGroup(db);
         await createStatisticStandardItem(db);
         await createStatisticStandardRecord(db);
-        await db.execute("drop table GameRecord");
         await createGameRecord(db);
+        await createGameRecordNote(db);
       },
     );
   }
@@ -73,7 +74,10 @@ class MyDbFactory {
     await database.execute('CREATE TABLE IF NOT EXISTS StatisticStandardItem'
         ' (id INTEGER PRIMARY KEY autoincrement, uuid TEXT, puuid TEXT,'
         ' summonerId TEXT, groupId INTEGER, name TEXT, type TEXT, '
-        'items TEXT, createTime INTEGER, updateTime INTEGER)');
+        'items TEXT, createTime INTEGER, updateTime INTEGER,description TEXT)');
+    // 增加一列，如果不存在
+    database.execute('ALTER TABLE StatisticStandardItem ADD COLUMN '
+        'description TEXT');
   }
 
   Future<void> createStatisticStandardRecord(Database database) async {
@@ -92,5 +96,10 @@ class MyDbFactory {
         ' creepScore INTEGER, spell1 TEXT, spell2 TEXT, primaryRune TEXT,'
         ' secondaryRune TEXT, rankLevel1 TEXT, rankLevel2 TEXT, content TEXT,'
         'puuid TEXT,summonerId TEXT)');
+  }
+
+  Future<void> createGameRecordNote(Database database) async {
+    await database.execute('CREATE TABLE IF NOT EXISTS GameRecordNote '
+        '(id INTEGER PRIMARY KEY autoincrement, gameId TEXT, content TEXT)');
   }
 }

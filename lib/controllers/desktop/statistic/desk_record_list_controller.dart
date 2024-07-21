@@ -5,9 +5,11 @@ import 'package:lol_master_app/entities/hero/hero_info.dart';
 import 'package:lol_master_app/entities/statistic/game_record.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
 import 'package:lol_master_app/services/statistic/statistic_standard_service.dart';
+import 'package:lol_master_app/util/date_utils.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/widgets/table/table_filter_widget.dart';
 import 'package:lol_master_app/widgets/table/table_widget.dart';
+import 'package:re_editor/src/re_editor.dart';
 
 enum ColumnType {
   text,
@@ -137,9 +139,21 @@ class DeskRecordListController extends MvcController {
     if (dateRange != null) {
       records = records.where((element) {
         var gameTime = element.gameTime;
-        if (gameTime != null && gameTime.length == "yyyy-MM-dd".length) {
-          var date = DateFormat("yyyy-MM-dd").parse(gameTime);
-          return date.isBefore(dateRange.end) && date.isAfter(dateRange.start);
+        if (gameTime != null) {
+          try {
+            var date = MyDateUtils.ymdFormat.parse(gameTime);
+            return date.isBefore(dateRange.end) &&
+                date.isAfter(dateRange.start);
+          } catch (e) {
+            print(e);
+          }
+          try {
+            var date = MyDateUtils.ymdhmsFormat.parse(gameTime);
+            return date.isBefore(dateRange.end) &&
+                date.isAfter(dateRange.start);
+          } catch (e) {
+            print(e);
+          }
         }
         return false;
       }).toList();
@@ -158,6 +172,8 @@ class DeskRecordListController extends MvcController {
     var rows = <MyRowItem>[];
     for (var i = 0; i < records.length; i++) {
       var record = records[i];
+      record.note ??=
+          await StatisticStandardService.instance.getGameNote(record.gameId);
       var row = MyRowItem(value: record);
       var colIndex = 0;
       row.cells = [
@@ -180,7 +196,7 @@ class DeskRecordListController extends MvcController {
             rowIndex: i,
             colIndex: colIndex++),
         MyCellItem(value: "评分", rowIndex: i, colIndex: colIndex++),
-        MyCellItem(value: "备注", rowIndex: i, colIndex: colIndex++),
+        MyCellItem(value: record.note ?? "", rowIndex: i, colIndex: colIndex++),
         MyCellItem(value: "详细数据", rowIndex: i, colIndex: colIndex++),
       ];
       rows.add(row);
@@ -282,5 +298,12 @@ class DeskRecordListController extends MvcController {
   int? getStandardGroupId(BuildContext context) {
     var controller = MvcController.of<DeskStatisticController>(context);
     return controller.currentStandardGroup?.id;
+  }
+
+  Future<void> updateGameNote(int rowIndex, String content) async {
+    tableController.rows[rowIndex].value.note = content;
+    var gameId = tableController.rows[rowIndex].value.gameId;
+    await StatisticStandardService.instance.setGameNote(gameId, content);
+    refreshTable();
   }
 }

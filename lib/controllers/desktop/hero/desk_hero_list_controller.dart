@@ -13,7 +13,7 @@ class DeskHeroListController extends MvcController {
 
   int selectHeroGroup = 0;
 
-  var heroGroups = ["所有英雄", "上路", "中路", "打野", "下路", "辅助", "收藏"];
+  var heroGroups = ["所有英雄", "上路", "中路", "打野", "下路", "辅助"];
 
   var searchController = TextEditingController();
 
@@ -32,9 +32,9 @@ class DeskHeroListController extends MvcController {
 
   Future<void> filterHero() async {
     heroFilterList = heroList.where((element) {
-      if (selectHeroGroup == heroGroups.length - 1) {
-        return element.favorite == true;
-      }
+      // if (selectHeroGroup == heroGroups.length - 1) {
+      //   return element.favorite == true;
+      // }
       if (selectHeroGroup == 0) {
         return true;
       }

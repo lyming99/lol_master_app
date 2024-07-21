@@ -1,4 +1,5 @@
 import 'package:bruno/bruno.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lol_master_app/entities/hero/hero_info.dart';
@@ -45,13 +46,22 @@ class DeskHeroListView extends MvcView<DeskHeroListController> {
                         const EdgeInsets.only(right: 8.0, top: 8, bottom: 8),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
-                      child: BrnCheckbox(
-                        radioIndex: i,
-                        isSelected: controller.selectHeroGroup == i,
-                        onValueChangedAtIndex: (index, select) {
-                          controller.updateSelectGroup(index);
+                      child: InkWell(
+                        onTap: () {
+                          controller.updateSelectGroup(i);
                         },
-                        child: Text(controller.heroGroups[i]),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IgnorePointer(
+                                child: Radio(
+                                    value: i,
+                                    groupValue: controller.selectHeroGroup,
+                                    onChanged: (value) {})),
+                            Text(controller.heroGroups[i]),
+                            SizedBox(width: 8,),
+                          ],
+                        ),
                       ),
                     ),
                   ),

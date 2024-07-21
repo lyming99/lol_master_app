@@ -228,7 +228,14 @@ class ScorePopupWindow extends MvcView<ScorePopupController> {
                       child = Text(value.item.name ?? "");
                     }
                     if (colIndex == 2) {
-                      child = Text(value.item.name ?? "");
+                      child = Tooltip(
+                        message: value.item.description ?? "",
+                        child: Text(
+                          value.item.description ?? "",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      );
                     }
                     if (colIndex == 3) {
                       child = buildScoreItemWidget(value, child);

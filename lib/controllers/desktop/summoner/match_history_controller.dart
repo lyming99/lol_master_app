@@ -173,7 +173,7 @@ class DeskMatchHistoryController extends MvcController {
         var mapId = item["mapId"];
         // 2024-06-20T12:57:56.218Z
         var gameDate =
-            MyDateUtils.formatUtcDateToDate(item["gameCreationDate"]);
+            MyDateUtils.formatUtcDateToDateTime(item["gameCreationDate"]);
         var gameDuration = item["gameDuration"];
         var gameResult = item["participants"].first["stats"]["win"];
         var queueId = item["queueId"];

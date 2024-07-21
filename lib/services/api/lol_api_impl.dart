@@ -52,7 +52,6 @@ class LolApiImpl extends LolApi {
       return;
     }
     gameStatusLoopStatus = true;
-    print('start game status loop');
     while (true) {
       await Future.delayed(const Duration(milliseconds: 1200));
       try {
@@ -61,11 +60,9 @@ class LolApiImpl extends LolApi {
           print("game status: $status");
           switch (status) {
             case GameStatusEnum.readyCheck:
-              print("in game");
               await acceptGame();
               break;
             case GameStatusEnum.champSelect:
-              print("in game champ select status.");
               getRoomInfo(false);
               // 加点延时，给钱优化(增加稳定性)
               await Future.delayed(const Duration(milliseconds: 1000));
@@ -75,7 +72,11 @@ class LolApiImpl extends LolApi {
               //游戏进程，查询所有人的战绩，显示到对局信息里面
               //再游戏进程中，应该需要用其他接口差对局信息
               //咱们只是查询的房间选择时的召唤师信息，因为房间会隐藏掉对面召唤师信息
-              getRoomInfo(true);
+              var ret = await getRoomInfo(true);
+              if (ret) {
+                /// 如果是游戏状态，则可以多等待一会儿
+                await Future.delayed(const Duration(milliseconds: 5000));
+              }
               break;
             default:
               break;
@@ -374,6 +375,7 @@ class LolApiImpl extends LolApi {
     if (config?.autoSelect != true) {
       return;
     }
+    await Future.delayed(Duration(seconds: 3));
     var primaryHero = config?.primaryHero;
     var secondaryHero = config?.secondaryHero;
     var thirdHero = config?.thirdHero;
@@ -513,7 +515,8 @@ class LolApiImpl extends LolApi {
       var gameType = item["gameType"];
       var mapId = item["mapId"];
       // 2024-06-20T12:57:56.218Z
-      var gameDate = MyDateUtils.formatUtcDateToDate(item["gameCreationDate"]);
+      var gameDate =
+          MyDateUtils.formatUtcDateToDateTime(item["gameCreationDate"]);
       var gameDuration = item["gameDuration"];
       var gameResult = item["participants"].first["stats"]["win"];
       var queueId = item["queueId"];
@@ -645,71 +648,30 @@ class LolApiImpl extends LolApi {
     return level2;
   }
 
-  Future<void> getRoomInfo(bool isInGameProgress) async {
-    if (DateTime.now().millisecondsSinceEpoch - lastQueryTime < 30000) {
-      /// 上次查询间隔大于30秒才进行下次查询
-      /// 以为游戏状态时轮询检测的，进入房间会触发查询
-      /// 只需查询一次，减少查询次数，避免频繁查询
-      return;
-    }
+  Future<bool> getRoomInfo(bool isInGameProgress) async {
     lastQueryTime = DateTime.now().millisecondsSinceEpoch;
     var currentPuuid = await getCurrentSummonerPuuid();
-    // myTeam
     try {
       /// 将接口返回保存，用于定位问题
       var playerList = <Player>[];
-      var championIdList = <String>[];
-      int? gameId;
-      if (isInGameProgress) {
-        // 在游戏进程，查询战绩，识别大哥大，大哥，小哥，小弟，小妹
-        var gameSession = await getGameSessionInfo();
-
-        if (gameSession != null) {
-          var oneTeam = gameSession["gameData"]["teamOne"] as List?;
-          var twoTeam = gameSession["gameData"]["teamTwo"] as List?;
-          if (oneTeam?.every((element) => element["puuid"] == currentPuuid) ==
-              true) {
-            var temp = oneTeam;
-            oneTeam = twoTeam;
-            twoTeam = temp;
-          }
-          gameId = gameSession["gameData"]["gameId"];
-          var list = [
-            ...(oneTeam ?? []),
-            ...(twoTeam ?? []),
-          ];
-          for (var item in list) {
-            var puuid = item['puuid'] ?? "";
-            playerList.add(Player()
-              ..puuid = puuid
-              ..heroId = item["championId"]?.toString() ?? "");
-            championIdList.add(item["championId"]?.toString() ?? "");
-          }
-        }
-      } else {
-        var roomSession = await getChampSelectInfo();
-        gameId = roomSession?["gameId"];
-        // 在房间中读取召唤师信息，查询战绩，识别大哥大，大哥，小哥，小弟，坑比
-        // myTeam,theirTeam
-        var teamList = [
-          ...(roomSession?["myTeam"] ?? []),
-        ];
-        for (var item in teamList) {
-          var puuid = item['puuid'] ?? "";
-          playerList.add(Player()
-            ..puuid = puuid
-            ..heroId = item["championId"]?.toString() ?? "");
-          championIdList.add(item["championId"]?.toString() ?? "");
-        }
-      }
+      int? gameId =
+          await getGameInfo(isInGameProgress, currentPuuid, playerList);
+      playerList = playerList
+          .where(
+              (element) => element.puuid != null && element.puuid!.isNotEmpty)
+          .toList();
+      var championIdList =
+          playerList.map((e) => e.heroId?.toString() ?? "").toList();
       // 如果是游戏进程，就不重复读取信息，避免一直刷新，过于频繁
+      var puuidSet = playerList.map((e) => e.puuid).toSet();
       if (gameId == lastQueryGameId && isInGameProgress) {
         var update = this.myTeamPlayers == null ||
             this.myTeamPlayers!.length != playerList.length ||
-            this.myTeamPlayers!.every((element) =>
-                !playerList.every((e) => e.puuid == element.puuid));
+            this
+                .myTeamPlayers!
+                .any((element) => !puuidSet.contains(element.puuid));
         if (!update) {
-          return;
+          return false;
         }
       }
       lastQueryGameId = gameId;
@@ -724,19 +686,18 @@ class LolApiImpl extends LolApi {
         var historyInfo = <HistoryInfo>[];
         if (puuid != "" && puuid != null) {
           try {
-            historyInfo = await queryMatchHistoryInfo(puuid, 20) ?? [];
+            historyInfo = await queryMatchHistoryInfo(puuid, 10) ?? [];
           } catch (e) {
             print(e);
           }
         }
-        myTeamHistoryInfo.add(historyInfo);
-        var winCount = historyInfo
-            .where((element) =>
-                element.gameResult == true && element.getGameTypeStr() == "单双排")
-            .length;
-        var gameCount = historyInfo
+        historyInfo = historyInfo
             .where((element) => element.getGameTypeStr() == "单双排")
-            .length;
+            .toList();
+        myTeamHistoryInfo.add(historyInfo);
+        var winCount =
+            historyInfo.where((element) => element.gameResult == true).length;
+        var gameCount = historyInfo.length;
         if (gameCount > 0) {
           winRateList.add((winCount / gameCount * 100.0));
         } else {
@@ -815,9 +776,56 @@ class LolApiImpl extends LolApi {
       // myTeamHistoryInfo = null;
       // myTeamPlayers = null;
       // lastQueryTime = 0;
+      return false;
     }
     // otherTeam?
     notifyListeners();
+    return true;
+  }
+
+  Future<int?> getGameInfo(bool isInGameProgress, String? currentPuuid,
+      List<Player> playerList) async {
+    int? gameId;
+    if (isInGameProgress) {
+      // 在游戏进程，查询战绩，识别大哥大，大哥，小哥，小弟，小妹
+      var gameSession = await getGameSessionInfo();
+      if (gameSession != null) {
+        var oneTeam = gameSession["gameData"]["teamOne"] as List?;
+        var twoTeam = gameSession["gameData"]["teamTwo"] as List?;
+        if (oneTeam?.every((element) => element["puuid"] == currentPuuid) ==
+            true) {
+          var temp = oneTeam;
+          oneTeam = twoTeam;
+          twoTeam = temp;
+        }
+        gameId = gameSession["gameData"]["gameId"];
+        var teamList = [
+          ...(oneTeam ?? []),
+          ...(twoTeam ?? []),
+        ];
+        for (var playerItem in teamList) {
+          var puuid = playerItem['puuid'] ?? "";
+          playerList.add(Player()
+            ..puuid = puuid
+            ..heroId = playerItem["championId"]?.toString() ?? "");
+        }
+      }
+    } else {
+      var roomSession = await getChampSelectInfo();
+      gameId = roomSession?["gameId"];
+      // 在房间中读取召唤师信息，查询战绩，识别大哥大，大哥，小哥，小弟，坑比
+      // myTeam,theirTeam
+      var teamList = [
+        ...(roomSession?["myTeam"] ?? []),
+      ];
+      for (var item in teamList) {
+        var puuid = item['puuid'] ?? "";
+        playerList.add(Player()
+          ..puuid = puuid
+          ..heroId = item["championId"]?.toString() ?? "");
+      }
+    }
+    return gameId;
   }
 
   @override

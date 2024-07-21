@@ -70,6 +70,9 @@ class GameRecord {
   /// 游戏json数据
   String? content;
 
+  /// 笔记备注：在GameRecordNote表中存储，通过gameId查询与插入
+  String? note;
+
   HeroInfo? heroInfo;
 
   GameRecord({
@@ -167,4 +170,8 @@ class GameRecord {
     var json = jsonDecode(content ?? "{}");
     return json['win'] == true;
   }
+
+  String get gameDate => (gameTime != null && gameTime!.length > 10)
+      ? gameTime!.substring(0, 10)
+      : gameTime ?? "";
 }

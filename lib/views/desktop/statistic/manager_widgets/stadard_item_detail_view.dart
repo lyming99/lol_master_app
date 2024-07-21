@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/widgets/circle_button.dart';
+import 'package:re_editor/re_editor.dart';
 
 class StandardItemDetailController extends MvcController {
   StatisticStandardItem? standardItem;
@@ -11,6 +12,8 @@ class StandardItemDetailController extends MvcController {
   List<String> items = [];
 
   int? editIndex;
+
+  var descriptionController = CodeLineEditingController.fromText("");
 
   int get itemsCount => items.length;
 
@@ -34,6 +37,7 @@ class StandardItemDetailController extends MvcController {
     } else {
       items = [];
     }
+    descriptionController.text = standardItem?.description ?? "";
     notifyListeners();
   }
 
@@ -96,6 +100,10 @@ class StandardItemDetailController extends MvcController {
 
   void saveItems() {
     standardItem?.items = jsonEncode(items);
+  }
+
+  void updateDescription(CodeLineEditingValue value) {
+    standardItem?.description = descriptionController.text;
   }
 }
 
@@ -232,48 +240,52 @@ class StandardItemDetailView extends MvcView<StandardItemDetailController> {
                 color: Colors.grey.withOpacity(.2),
               ),
               if (controller.itemType == 1)
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 16,
-                  ),
-                  child: RichText(
-                      textAlign: TextAlign.start,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(text: "将此项设置为"),
-                          TextSpan(
-                            text: "数值型",
-                            style: TextStyle(
-                              color: Colors.green.shade300,
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
+                    child: RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(text: "将此项设置为"),
+                            TextSpan(
+                              text: "数值型",
+                              style: TextStyle(
+                                color: Colors.green.shade300,
+                              ),
                             ),
-                          ),
-                          TextSpan(text: "，如果已经有数据，则重置为空"),
-                        ],
-                      )),
+                            TextSpan(text: "，如果已经有数据，则重置为空"),
+                          ],
+                        )),
+                  ),
                 ),
               if (controller.itemType == 2)
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 16,
-                  ),
-                  child: RichText(
-                      textAlign: TextAlign.start,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(text: "将此项设置为"),
-                          TextSpan(
-                            text: "布尔型",
-                            style: TextStyle(
-                              color: Colors.purple.shade300,
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
+                    child: RichText(
+                        textAlign: TextAlign.start,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(text: "将此项设置为"),
+                            TextSpan(
+                              text: "布尔型",
+                              style: TextStyle(
+                                color: Colors.purple.shade300,
+                              ),
                             ),
-                          ),
-                          TextSpan(text: "，如果已经有数据，则重置为空"),
-                        ],
-                      )),
+                            TextSpan(text: "，如果已经有数据，则重置为空"),
+                          ],
+                        )),
+                  ),
                 ),
               if (controller.itemType == 3)
                 Expanded(
@@ -407,6 +419,21 @@ class StandardItemDetailView extends MvcView<StandardItemDetailController> {
                     itemCount: controller.itemsCount,
                   ),
                 ),
+              Container(
+                height: 1,
+                color: Color(0xff574729),
+              ),
+              Expanded(
+                child: CodeEditor(
+                  padding: EdgeInsets.all(8),
+                  autofocus: false,
+                  controller: controller.descriptionController,
+                  hint: "请输入项目描述",
+                  onChanged: (value) {
+                    controller.updateDescription(value);
+                  },
+                ),
+              )
             ],
           ),
         ),

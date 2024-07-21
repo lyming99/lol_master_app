@@ -34,4 +34,8 @@ abstract class StatisticStandardService {
   Future<void> recordGameInfo(List<HistoryInfo>? historyList);
 
   Future<List<GameRecord>> getGameRecordList();
+
+  Future<String?> getGameNote(String? gameId);
+
+  Future<int?> setGameNote(String? gameId, String? gameNote);
 }

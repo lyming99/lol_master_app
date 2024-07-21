@@ -80,6 +80,8 @@ class StatisticStandardItem {
 
   int? updateTime;
 
+  String? description;
+
   StatisticStandardItem({
     this.id,
     this.uuid,
@@ -91,6 +93,7 @@ class StatisticStandardItem {
     this.items,
     this.createTime,
     this.updateTime,
+    this.description,
   });
 
   factory StatisticStandardItem.fromJson(Map<String, dynamic> json) {
@@ -105,6 +108,7 @@ class StatisticStandardItem {
       items: json['items'],
       createTime: json['createTime'],
       updateTime: json['updateTime'],
+      description: json['description'],
     );
   }
 
@@ -120,6 +124,7 @@ class StatisticStandardItem {
       'items': items,
       'createTime': createTime,
       'updateTime': updateTime,
+      'description': description,
     };
   }
 

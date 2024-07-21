@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lol_master_app/controllers/desktop/desk_home.dart';
-import 'package:lol_master_app/controllers/desktop/equip/desk_equip_config_controller.dart';
 import 'package:lol_master_app/controllers/desktop/hero/desk_hero_detail_controller.dart';
-import 'package:lol_master_app/entities/equip/equip_config.dart';
 import 'package:lol_master_app/entities/hero/hero_info.dart';
 import 'package:lol_master_app/views/desktop/desk_home_view.dart';
 import 'package:lol_master_app/views/desktop/hero/desk_hero_detail_view.dart';

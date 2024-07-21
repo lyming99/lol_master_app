@@ -47,7 +47,7 @@ class DeskStandardManagerController extends MvcController {
     notifyListeners();
   }
 
-  void addItem() {
+  void addGroup() {
     groupList.add(
       StatisticStandardGroup(
         name: "新建评分标准",
@@ -111,6 +111,7 @@ class DeskStandardManagerController extends MvcController {
     if (selectGroupIndex == -1) {
       selectGroupIndex = 0;
     }
+    updateSelectGroup(selectGroupIndex);
     notifyListeners();
   }
 }
@@ -240,7 +241,7 @@ class _ToolNav extends StatelessWidget {
                 if (!controller.showEdit)
                   CircleButton(
                     onTap: () {
-                      controller.addItem();
+                      controller.addGroup();
                     },
                     radius: 0,
                     child: const SizedBox(

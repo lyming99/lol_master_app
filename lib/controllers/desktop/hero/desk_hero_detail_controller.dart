@@ -42,11 +42,17 @@ class DeskHeroDetailController extends MvcController {
     super.onInitState(context, state);
     tabController = TabController(length: tabTitles.length, vsync: state);
     heroSpellController.heroId = hero?.heroId;
-    heroEquipController.heroId = hero?.heroId??"";
+    heroEquipController.heroId = hero?.heroId ?? "";
     heroRuneController.heroId = hero?.heroId;
   }
 
-  List<String> get tabTitles => ["技能", "属性", "符文", "装备", "攻略"];
+  List<String> get tabTitles => [
+        "技能",
+        "属性",
+        "符文",
+        "装备",
+        // "攻略",
+      ];
 
   List<Widget> get tabViews {
     return [
@@ -60,7 +66,7 @@ class DeskHeroDetailController extends MvcController {
       ),
       DeskHeroRuneView(controller: heroRuneController),
       DeskEquipConfigListView(controller: heroEquipController),
-      DeskHeroNoteView(controller: heroNoteController),
+      // DeskHeroNoteView(controller: heroNoteController),
     ];
   }
 }

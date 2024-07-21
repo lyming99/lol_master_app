@@ -21,6 +21,7 @@ void main() async {
         minimumSize: Size(800, 540),
         title: "LOL大师助手",
         backgroundColor: Colors.transparent,
+        alwaysOnTop: true,
       ), () async {
     await windowManager.setAsFrameless();
     await windowManager.show();

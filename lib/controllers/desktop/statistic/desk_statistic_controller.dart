@@ -9,6 +9,7 @@ import 'package:lol_master_app/entities/statistic/game_record.dart';
 import 'package:lol_master_app/entities/statistic/statistic_standard.dart';
 import 'package:lol_master_app/services/config/lol_config_service.dart';
 import 'package:lol_master_app/services/statistic/statistic_standard_service.dart';
+import 'package:lol_master_app/util/date_utils.dart';
 import 'package:lol_master_app/util/mvc.dart';
 import 'package:lol_master_app/views/desktop/statistic/statistic_widgets/correlation_statistic_grahpx.dart';
 import 'package:lol_master_app/widgets/dropmenu/drop_menu.dart';
@@ -218,9 +219,19 @@ class DeskStatisticController extends MvcController {
         return true;
       }
       var gameTime = element.gameTime;
-      if (gameTime != null && gameTime.length == "yyyy-MM-dd".length) {
-        var date = DateFormat("yyyy-MM-dd").parse(gameTime);
-        return date.isBefore(dateRange.end) && date.isAfter(dateRange.start);
+      if (gameTime != null) {
+        try {
+          var date = MyDateUtils.ymdFormat.parse(gameTime);
+          return date.isBefore(dateRange.end) && date.isAfter(dateRange.start);
+        } catch (e) {
+          print(e);
+        }
+        try {
+          var date = MyDateUtils.ymdhmsFormat.parse(gameTime);
+          return date.isBefore(dateRange.end) && date.isAfter(dateRange.start);
+        } catch (e) {
+          print(e);
+        }
       }
       return false;
     }).toList();

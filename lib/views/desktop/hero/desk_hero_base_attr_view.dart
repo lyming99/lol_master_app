@@ -77,10 +77,9 @@ class _HeroAttrWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       width: 80,
       height: 80,
-      margin: EdgeInsets.all(1),
+      margin: const EdgeInsets.all(1),
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -88,7 +87,7 @@ class _HeroAttrWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(value ?? "100"),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Text(name ?? "生命"),

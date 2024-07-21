@@ -41,4 +41,8 @@ abstract class StandardDao extends BaseDao {
   Future<int> upsertGameRecord(GameRecord item);
 
   Future<List<GameRecord>> getGameRecordList();
+
+  Future<String?> getGameNote(String? gameId);
+
+  Future<int?> setGameNote(String? gameId, String? gameNote);
 }
